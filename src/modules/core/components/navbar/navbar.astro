@@ -1,0 +1,43 @@
+---
+import { NavbarRoutes } from "@core/lib/routes/navbar-routes";
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="fixed w-full h-20 flex items-center justify-between z-10">
+    <div class="h-full px-8 items-center uppercase flex tracking-wider text-xl ">
+        <h1>CLEAN—UI</h1>
+    </div>
+	
+    <div class="w-3/4 flex px-8 gap-8 lg:gap-16 justify-end h-full">
+        {
+            NavbarRoutes.map((routes,i) =>{ 
+                const isActive = routes.route.includes(currentPath);
+                return(
+                // <TransitionLink
+                // 	client:idle
+                // 	disabled={isActive}
+                // 	to={routes.route[0]}
+                // 	className={`text-base ${isActive ? 'text-accent' : 'text-black'}  hover:text-accent w-fit h-fit transition-all duration-300 "`}
+                // >
+                    <div class={`uppercase flex text-nowrap items-center tracking-wider text-xl `}>
+                        <p>{routes.name}</p>
+                        <p class="">—0{i+1}</p>
+                    </div>
+                // </TransitionLink>
+            )})
+        }
+    </div>
+</nav>
+
+<script>
+    // import {gsap} from 'gsap'
+
+    // document.addEventListener('DOMContentLoaded', function() {
+	// 	gsap.from(".navbar", {
+	// 		duration: 1,
+	// 		y: 25,
+	// 		stagger: 0.1,
+	// 		ease: "expo.out",
+	// 	});
+	// });
+</script>
