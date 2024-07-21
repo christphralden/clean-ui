@@ -1,15 +1,34 @@
 ---
 import Layout from "@core/layouts/layout.astro"
+import Separator from "@core/components/ui/separator.astro"
+import { ContentRoutes } from "@core/lib/routes"
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<section class="h-72 w-fit justify-center items-start flex flex-col">
-			<h1 class="text-5xl leading-[3.5rem]">Curated collections of pristine CLEAN—UI components</h1>
-			<h1 class="text-5xl leading-[3.5rem]">Elegantly designed, each offers a unique aesthetic.</h1>
+	<main class="flex flex-col gap-16">
+		<section class="h-64 w-fit justify-center items-start flex flex-col">
+			<h1 class="text-3xl xl:text-5xl xl:leading-[3.5rem]">Curated collections of pristine CLEAN—UI components</h1>
+			<h1 class="text-3xl xl:text-5xl xl:leading-[3.5rem]">Elegantly designed, each offers a unique aesthetic.</h1>
 		</section>	
 
 
-		<p class="text-3xl">Table of contents</p>
+		<section class="h-3/4 flex flex-col gap-8">
+			<div class="flex flex-col gap-4">
+				<p class="text-3xl xl:text-5xl font-jha">Table of Contents</p>
+			</div>	
+			<div class="flex flex-col gap-4">
+				{
+					ContentRoutes.map((routes, i)=>(
+						<Fragment key={i}>
+							<div class="flex uppercase text-xl ">
+								<p>{routes.name}</p>
+								<p>—12</p>
+							</div>	
+							<Separator/>
+						</Fragment>
+					))
+				}	
+			</div>
+		</section>
 	</main>
 </Layout>

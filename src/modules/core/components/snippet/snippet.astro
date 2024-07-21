@@ -1,0 +1,14 @@
+---
+import { Code } from 'astro:components'
+import { Prism } from '@astrojs/prism'
+
+---
+<div>
+    <Code code={`const foo = 'bar';`} lang="js" theme={"tokyo-night"} />
+    <Prism lang="astro" code={`const foo = 'bar';`} />
+
+</div>
+
+<style>
+
+</style>

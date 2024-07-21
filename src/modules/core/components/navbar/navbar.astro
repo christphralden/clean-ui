@@ -1,5 +1,5 @@
 ---
-import { NavbarRoutes } from "@core/lib/routes/navbar-routes";
+import { NavbarRoutes } from "@core/lib/routes";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -8,7 +8,7 @@ const currentPath = Astro.url.pathname;
         <h1>CLEAN—UI</h1>
     </div>
 	
-    <div class="w-3/4 flex px-8 gap-8 lg:gap-16 justify-end h-full">
+    <div class="w-3/4 flex px-8 gap-8 xl:gap-16 justify-end h-full">
         {
             NavbarRoutes.map((routes,i) =>{ 
                 const isActive = routes.route.includes(currentPath);
@@ -19,10 +19,11 @@ const currentPath = Astro.url.pathname;
                 // 	to={routes.route[0]}
                 // 	className={`text-base ${isActive ? 'text-accent' : 'text-black'}  hover:text-accent w-fit h-fit transition-all duration-300 "`}
                 // >
-                    <div class={`uppercase flex text-nowrap items-center tracking-wider text-xl `}>
+                    <a href={routes.route[0]} class={`uppercase flex text-nowrap items-center tracking-wider text-xl `}>
                         <p>{routes.name}</p>
                         <p class="">—0{i+1}</p>
-                    </div>
+                    </a>
+
                 // </TransitionLink>
             )})
         }

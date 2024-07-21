@@ -12,9 +12,9 @@ const NavbarRoutes = [
         route:["/sites"]
     },
     {
-        name:"More",
-        route:["/more"]
+        name:"christphralden",
+        route:["https://christphralden.vercel.app"]
     }
 ]
 
-export {NavbarRoutes}
+export default NavbarRoutes 

@@ -20,7 +20,7 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<Navbar/>
-		<div class="pt-20 px-8 w-full min-h-screen">
+		<div class="pt-20 px-8 w-full min-h-[100dvh]">
 			<slot />
 		</div>
 		
@@ -29,6 +29,10 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		box-sizing: border-box;
+		min-height: min;
+	}
+	a{
+		all: unset;
 	}
 	html {
 		font-family: Restart, sans-serif;
