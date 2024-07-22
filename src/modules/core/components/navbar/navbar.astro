@@ -3,7 +3,7 @@ import { NavbarRoutes } from "@core/lib/routes";
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="fixed w-full h-20 flex items-center justify-between z-10">
+<nav class="fixed w-full h-20 flex items-center justify-between z-10 bg-background">
     <div class="h-full px-8 items-center uppercase flex tracking-wider text-xl ">
         <h1 class="logo">CLEAN—UI</h1>
     </div>
@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
                 // 	to={routes.route[0]}
                 // 	className={`text-base ${isActive ? 'text-accent' : 'text-black'}  hover:text-accent w-fit h-fit transition-all duration-300 "`}
                 // >
-                    <a href={routes.route[0]} class={`navbar uppercase flex text-nowrap items-center tracking-wider text-xl `}>
+                    <a href={isActive ? "#" : routes.route[0]} class={`navbar uppercase flex text-nowrap items-center tracking-wider text-xl `}>
                         <p>{routes.name}</p>
                         <p class="">—0{i+1}</p>
                     </a>
@@ -31,17 +31,18 @@ const currentPath = Astro.url.pathname;
 </nav>
 
 <script>
-    import { waveEffect, fadeInSlideFromLeft } from "@core/lib/animations";
+    import { waveEffect } from "@core/lib/animations";
+
     document.addEventListener('DOMContentLoaded', () => {
+        const navbarElements = document.querySelectorAll('.navbar');
+		navbarElements.forEach((el) => el.classList.remove('hidden'));
+
         waveEffect({
             className:"navbar",
             y: 25,
             timing: 0.03,
 			duration: 1,
         })
-        fadeInSlideFromLeft({
-            className:"logo",
-            duration:0.8
-        })
+        
 	});
 </script>

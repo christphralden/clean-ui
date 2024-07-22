@@ -1,67 +1,87 @@
 ---
-import Layout from "@core/layouts/layout.astro"
-import Separator from "@core/components/ui/separator.astro"
-import { ContentRoutes } from "@core/lib/routes"
-import { heading } from "@core/contents/index/header.json"
-import { splitText } from "@core/lib/utils/index"
+import Layout from '@core/layouts/layout.astro';
+import Separator from '@core/components/ui/separator.astro';
+import {ContentRoutes} from '@core/lib/routes';
+import {heading} from '@core/contents/index/header.json';
+import {splitText} from '@core/lib/utils/index';
+import {ArrowUpRight} from '@geist-ui/icons';
 
 const headingLine1 = splitText({
-	text: heading[0]
-})
+	text: heading[0],
+});
 const headingLine2 = splitText({
-	text: heading[1]
-})
+	text: heading[1],
+});
 ---
 
 <Layout title="Welcome to Astro.">
 	<main class="flex flex-col gap-16">
-		<section class="[&>h1]:'text-3xl xl:text-5xl xl:leading-[3.5rem]' h-64 w-fit gap-2 justify-center items-start flex flex-col">
-			<div class="flex gap-3">
-				{headingLine1.map((word)=>{
-					return(
-						<h1 class="staggerText">{word}</h1>
-					)
-				})}
-			</div>	
-			<div class="flex gap-3">
-				{headingLine2.map((word)=>{
-					return(
-						<h1 class="staggerText">{word}</h1>
-					)
-				})}
-			</div>	
-		</section>	
-
+		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col">
+			<div class="flex gap-2 xl:gap-3">
+				{
+					headingLine1.map((word) => {
+						return <h1 class="staggerText hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">{word}</h1>;
+					})
+				}
+			</div>
+			<div class="flex gap-2 xl:gap-3">
+				{
+					headingLine2.map((word) => {
+						return <h1 class="staggerText hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">{word}</h1>;
+					})
+				}
+			</div>
+		</section>
 
 		<section class="h-3/4 flex flex-col gap-8">
 			<div class="flex flex-col gap-4">
 				<p class="text-3xl xl:text-5xl font-jha">Table of Contents</p>
-			</div>	
-			<div class="flex flex-col gap-4">
+			</div>
+			<div class="flex flex-col relative full-width-component">
+				<Separator />
 				{
-					ContentRoutes.map((routes, i)=>(
-						<Fragment key={i}>
-							<div class="flex uppercase text-xl ">
-								<p>{routes.name}</p>
-								<p>—12</p>
-							</div>	
-							<Separator/>
+					ContentRoutes.map((routes) => (
+						<Fragment>
+							<div class="group p-4 px-10 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+								<div class="flex">
+									<p>{routes.name}</p>
+									<p>—12</p>
+								</div>
+								<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+									<ArrowUpRight color='white'/>
+								</div>
+							</div>
+							<Separator />
 						</Fragment>
 					))
-				}	
+				}
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <script>
-	import { waveEffect } from "@core/lib/animations";
+	import {waveEffect} from '@core/lib/animations';
 
 	document.addEventListener('DOMContentLoaded', () => {
+		const staggerTextElements = document.querySelectorAll('.staggerText');
+		staggerTextElements.forEach((el) => el.classList.remove('hidden'));
+
 		waveEffect({
-			className: "staggerText",
-			timing: 0.02,
+			className: 'staggerText',
+			timing: 0.03,
 			duration: 0.8,
-		})
+		});
 	});
 </script>
+
+<style>
+	.hidden {
+		opacity: 0;
+	}
+	.full-width-component {
+		margin-left: -2rem;
+		margin-right: -2rem;
+		width: calc(100% + 4rem);
+	}
+</style>

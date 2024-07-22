@@ -1,0 +1,6 @@
+{
+    // for non fzf users
+    "workbench.editor.customLabels.patterns":{
+        "**/src/pages/**/index.tsx":"${dirname} - index",
+    }
+}

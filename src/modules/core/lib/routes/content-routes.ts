@@ -28,12 +28,17 @@ const ContentRoutes = [
         route: "micro interactions"
     },
     {
+        name: "form",
+        route: "form"
+    },
+    {
         name: "card",
         route: "card"
     },
-
-
-    
+    {
+        name: "button",
+        route: "button"
+    }
 ]
 
 
