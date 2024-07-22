@@ -2,13 +2,34 @@
 import Layout from "@core/layouts/layout.astro"
 import Separator from "@core/components/ui/separator.astro"
 import { ContentRoutes } from "@core/lib/routes"
+import { heading } from "@core/contents/index/header.json"
+import { splitText } from "@core/lib/utils/index"
+
+const headingLine1 = splitText({
+	text: heading[0]
+})
+const headingLine2 = splitText({
+	text: heading[1]
+})
 ---
 
 <Layout title="Welcome to Astro.">
 	<main class="flex flex-col gap-16">
-		<section class="h-64 w-fit justify-center items-start flex flex-col">
-			<h1 class="text-3xl xl:text-5xl xl:leading-[3.5rem]">Curated collections of pristine CLEAN—UI components</h1>
-			<h1 class="text-3xl xl:text-5xl xl:leading-[3.5rem]">Elegantly designed, each offers a unique aesthetic.</h1>
+		<section class="[&>h1]:'text-3xl xl:text-5xl xl:leading-[3.5rem]' h-64 w-fit gap-2 justify-center items-start flex flex-col">
+			<div class="flex gap-3">
+				{headingLine1.map((word)=>{
+					return(
+						<h1 class="staggerText">{word}</h1>
+					)
+				})}
+			</div>	
+			<div class="flex gap-3">
+				{headingLine2.map((word)=>{
+					return(
+						<h1 class="staggerText">{word}</h1>
+					)
+				})}
+			</div>	
 		</section>	
 
 
@@ -32,3 +53,13 @@ import { ContentRoutes } from "@core/lib/routes"
 		</section>
 	</main>
 </Layout>
+
+<script>
+	import { staggerText } from "@core/lib/animations";
+
+	document.addEventListener('DOMContentLoaded', () => {
+		staggerText({
+			className: ".staggerText"
+		})
+	});
+</script>
