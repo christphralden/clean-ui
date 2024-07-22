@@ -34,25 +34,25 @@ const headingLine2 = splitText({
 		</section>
 
 		<section class="h-3/4 flex flex-col gap-8">
-			<div class="flex flex-col gap-4">
-				<p class="text-3xl xl:text-5xl font-jha">Table of Contents</p>
+			<div class="flex flex-col gap-4 staggerText hidden">
+				<p class="text-3xl xl:text-5xl font-jha ">Table of Contents</p>
 			</div>
-			<div class="flex flex-col relative full-width-component">
-				<Separator />
+			<div class="flex flex-col relative staggerText hidden full-width-component">
+				<Separator className='staggerText'/>
 				{
-					ContentRoutes.map((routes) => (
-						<Fragment>
-							<div class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
-								<div class="flex">
+					ContentRoutes.routes.map((routes) => (
+						<div class="staggerText">
+							<a href={`${ContentRoutes.baseUrl}${routes.route}`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+								<div class="flex content ">
 									<p>{routes.name}</p>
 									<p>—12</p>
 								</div>
-								<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+								<div class="group-hover:opacity-100 transition-opacity ease-out duration-100">
 									<ArrowUpRight color='white'/>
 								</div>
-							</div>
-							<Separator />
-						</Fragment>
+							</a>
+							<Separator className='content'/>
+						</div>
 					))
 				}
 			</div>
@@ -61,7 +61,7 @@ const headingLine2 = splitText({
 </Layout>
 
 <script>
-	import {waveEffect} from '@core/lib/animations';
+	import {waveEffect, skewedSlideIn} from '@core/lib/animations';
 
 	document.addEventListener('DOMContentLoaded', () => {
 		const staggerTextElements = document.querySelectorAll('.staggerText');
@@ -69,9 +69,18 @@ const headingLine2 = splitText({
 
 		waveEffect({
 			className: 'staggerText',
-			timing: 0.03,
-			duration: 0.8,
+			timing: 0.02,
+			duration: 0.5,
 		});
+
+		skewedSlideIn({
+			className: 'content',
+			timing: 0.02,
+			duration: 0.4,
+			x:-100,
+			skewX: -90,
+			delay: 0.2,
+		})
 	});
 </script>
 

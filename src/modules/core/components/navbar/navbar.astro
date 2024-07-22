@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
                 // 	to={routes.route[0]}
                 // 	className={`text-base ${isActive ? 'text-accent' : 'text-black'}  hover:text-accent w-fit h-fit transition-all duration-300 "`}
                 // >
-                    <a href={isActive ? "#" : routes.route[0]} class={`navbar uppercase flex text-nowrap items-center tracking-wider text-xl `}>
+                    <a href={isActive ? "#" : routes.route[0]} class={`uppercase flex text-nowrap items-center tracking-wider text-xl `}>
                         <p>{routes.name}</p>
                         <p class="">—0{i+1}</p>
                     </a>
@@ -29,20 +29,3 @@ const currentPath = Astro.url.pathname;
         }
     </div>
 </nav>
-
-<script>
-    import { waveEffect } from "@core/lib/animations";
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const navbarElements = document.querySelectorAll('.navbar');
-		navbarElements.forEach((el) => el.classList.remove('hidden'));
-
-        waveEffect({
-            className:"navbar",
-            y: 25,
-            timing: 0.03,
-			duration: 1,
-        })
-        
-	});
-</script>

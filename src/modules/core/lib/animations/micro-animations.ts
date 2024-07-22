@@ -39,9 +39,9 @@ export function waveEffect({
         stagger: {
             each: timing,
             from: "start",
-            ease: "sine.inOut"
+            ease: "sine.in"
         },
-        ease: "power2.inOut",
+        ease: "power2.out",
     });
 }
 
@@ -51,7 +51,8 @@ export function skewedSlideIn({
     x = 100,
     skewX = 45,
     opacity = 0,
-    timing = 0.05
+    timing = 0.05,
+    delay = 0
 }:{
     className : string
     duration? : number
@@ -59,6 +60,7 @@ export function skewedSlideIn({
     skewX? : number
     opacity? : number
     timing? : number
+    delay? : number
 }) {
     gsap.from(`.${className}`, {
         duration: duration,
@@ -68,8 +70,8 @@ export function skewedSlideIn({
         stagger: {
             each: timing,
         },
-        ease: "power2.out",
-    });
+        ease: "expo.out",
+    }).delay(delay);
 }
 
 export function fadeInSlideFromLeft({

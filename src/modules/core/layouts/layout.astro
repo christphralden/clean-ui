@@ -77,6 +77,7 @@ const {title} = Astro.props;
 	}
 </style>
 <script >
+	
 	import LocomotiveScroll from 'locomotive-scroll';
 	const options = {
 			wrapper: window,
@@ -92,4 +93,8 @@ const {title} = Astro.props;
 			normalizeWheel: true,
 	}
 	const locomotiveScroll = new LocomotiveScroll(options);
+
+	document.addEventListener("DOMContentLoaded", ()=>{
+		window.scrollTo(0,0)
+	})
 </script>
