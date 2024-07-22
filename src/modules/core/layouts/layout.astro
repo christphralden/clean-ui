@@ -15,7 +15,7 @@ const {title} = Astro.props;
 		<meta charset="UTF-8" />
 		<meta
 			name="description"
-			content="Astro description"
+			content="Curated collections of pristine clean ui components. Elegantly designed, each offering a unique aestheic"
 		/>
 		<meta
 			name="viewport"
@@ -31,10 +31,11 @@ const {title} = Astro.props;
 			content={Astro.generator}
 		/>
 		<title>{title}</title>
+		<link rel="stylesheet" href="/src/modules/core/styles/locomotive.css">
 	</head>
 	<body class="bg-background">
 		<Navbar />
-		<div class="bg-background pt-20 px-8 w-full min-h-[100dvh]">
+		<div class="data-scroll bg-background pt-20 px-8 w-full min-h-[100dvh]">
 			<slot />
 		</div>
 		<Footer/>
@@ -75,3 +76,20 @@ const {title} = Astro.props;
 	code {
 	}
 </style>
+<script >
+	import LocomotiveScroll from 'locomotive-scroll';
+	const options = {
+			wrapper: window,
+			content: document.documentElement,
+			lerp: 0.3,
+			duration: 0.5,
+			orientation: 'vertical',
+			gestureOrientation: 'vertical',
+			smoothWheel: true,
+			smoothTouch: false,
+			wheelMultiplier: 2,
+			touchMultiplier: 2,
+			normalizeWheel: true,
+	}
+	const locomotiveScroll = new LocomotiveScroll(options);
+</script>

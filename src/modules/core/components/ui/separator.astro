@@ -1,4 +1,6 @@
 ---
+import { cn } from '@core/lib/utils'
+
 type Props = {
     className?: string
 }
@@ -6,4 +8,4 @@ type Props = {
 const {className} = Astro.props
 
 ---
-<div class={`w-full h-[1px] border-[0.5px] border-zinc-500 ${className}`}/>
+<div class={cn(`w-full h-[1px] border-[0.5px] border-zinc-500`, className)}/>
