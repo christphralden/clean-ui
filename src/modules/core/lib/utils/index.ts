@@ -1,1 +1,1 @@
-export {splitText} from "./micro-interactions"
+export { splitText } from "./micro-interactions"

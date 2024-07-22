@@ -16,9 +16,23 @@ const ContentRoutes = [
         route: "sidebar"
     },
     {
+        name: "landing",
+        route: "landing"
+    },
+    {
+        name: "scroll interactions",
+        route: "scroll"
+    },
+    {
+        name: "micro interactions",
+        route: "micro interactions"
+    },
+    {
         name: "card",
         route: "card"
     },
+
+
     
 ]
 

@@ -55,11 +55,13 @@ const headingLine2 = splitText({
 </Layout>
 
 <script>
-	import { staggerText } from "@core/lib/animations";
+	import { waveEffect } from "@core/lib/animations";
 
 	document.addEventListener('DOMContentLoaded', () => {
-		staggerText({
-			className: ".staggerText"
+		waveEffect({
+			className: "staggerText",
+			timing: 0.02,
+			duration: 0.8,
 		})
 	});
 </script>
