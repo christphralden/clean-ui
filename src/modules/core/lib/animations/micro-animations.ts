@@ -40,7 +40,7 @@ export function waveEffect({
         stagger: {
             each: timing,
             from: "start",
-            ease: "sine.in"
+            ease: "sine.inOut"
         },
         ease: "power2.out",
     })
