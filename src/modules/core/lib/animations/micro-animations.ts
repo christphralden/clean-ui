@@ -11,7 +11,7 @@ export function staggerTextFrom({
     y? : number
     timing? : number
 }) {
-    gsap.from(`.${className}`, {
+    return gsap.from(`.${className}`, {
         duration: duration,
         y: y,
         stagger: {
@@ -25,14 +25,15 @@ export function waveEffect({
     className,
     duration = 1,
     y = 50,
-    timing = 0.05
+    timing = 0.05,
 }:{
     className : string
     duration? : number
     y? : number
     timing? : number
+    delay? : number
 }) {
-    gsap.from(`.${className}`, {
+    return gsap.from(`.${className}`, {
         duration: duration,
         y: y,
         opacity: 0,
@@ -42,7 +43,7 @@ export function waveEffect({
             ease: "sine.in"
         },
         ease: "power2.out",
-    });
+    })
 }
 
 export function skewedSlideIn({
@@ -52,7 +53,6 @@ export function skewedSlideIn({
     skewX = 45,
     opacity = 0,
     timing = 0.05,
-    delay = 0
 }:{
     className : string
     duration? : number
@@ -60,9 +60,8 @@ export function skewedSlideIn({
     skewX? : number
     opacity? : number
     timing? : number
-    delay? : number
 }) {
-    gsap.from(`.${className}`, {
+    return gsap.from(`.${className}`, {
         duration: duration,
         x: x,
         skewX: skewX,
@@ -71,7 +70,7 @@ export function skewedSlideIn({
             each: timing,
         },
         ease: "expo.out",
-    }).delay(delay);
+    })
 }
 
 export function fadeInSlideFromLeft({
@@ -87,7 +86,7 @@ export function fadeInSlideFromLeft({
     opacity? : number
     timing? : number
 }) {
-    gsap.from(`.${className}`, {
+    return gsap.from(`.${className}`, {
         duration: duration,
         x: x,
         opacity: opacity,
