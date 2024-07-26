@@ -6,6 +6,7 @@ import {ContentRoutes} from '@core/lib/routes';
 import {cleanUiHighlighter} from '@core/lib/themes/index';
 
 import {getEntry} from 'astro:content';
+import Separator from '@core/components/ui/separator.astro';
 const defaultSidebar = await getEntry('sidebar', 'default');
 const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
 	lang: 'typescript',
@@ -37,9 +38,16 @@ const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
 				class="flex-1 flex flex-col gap-16 max-w-full p-4 code-container"
 				slot="content"
 			>
-				<div>
-					<h1 class="text-5xl  uppercase">{defaultSidebar.data.title}</h1>	
+				<div class="flex w-full flex-col">
+					<div class="w-full">
+						<h1 class="text-5xl  uppercase ">{defaultSidebar.data.title}</h1>
+					</div>	
+					<div class="w-full flex items-end justify-start mb-8">
+						<h3 class="text-xl font-thin">{defaultSidebar.data.description}</h3>
+					</div>	
+					<Separator />
 				</div>
+				
 				<div
 					class="w-full "
 					set:html={html}
