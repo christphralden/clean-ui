@@ -68,18 +68,18 @@ const headingLine2 = splitText({
 		staggerTextElements.forEach((el) => el.classList.remove('hidden'));
 
 		waveEffect({
-			className: 'staggerText',
+			className: '.staggerText',
 			timing: 0.02,
-			duration: 0.5,
-		}).delay(0.1);
+			duration: 0.4,
+		})
 
 		skewedSlideIn({
-			className: 'content',
-			timing: 0.02,
+			className: '.content',
+			timing: 0.03,
 			duration: 0.4,
 			x:-100,
 			skewX: -90,
-		}).delay(0.2)
+		}).delay(0.1)
 	});
 </script>
 

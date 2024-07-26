@@ -13,18 +13,10 @@ const currentPath = Astro.url.pathname;
             NavbarRoutes.map((routes,i) =>{ 
                 const isActive = routes.route.includes(currentPath);
                 return(
-                // <TransitionLink
-                // 	client:idle
-                // 	disabled={isActive}
-                // 	to={routes.route[0]}
-                // 	className={`text-base ${isActive ? 'text-accent' : 'text-black'}  hover:text-accent w-fit h-fit transition-all duration-300 "`}
-                // >
-                    <a href={isActive ? "#" : routes.route[0]} class={`uppercase flex text-nowrap items-center tracking-wider text-xl `}>
+                    <a href={isActive ? "#" : routes.route[0]} class={`uppercase hover:underline underline-offset-4 flex text-nowrap items-center tracking-wider text-xl `}>
                         <p>{routes.name}</p>
                         <p class="">—0{i+1}</p>
                     </a>
-
-                // </TransitionLink>
             )})
         }
     </div>

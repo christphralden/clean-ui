@@ -1,0 +1,14 @@
+---
+type Props = {};
+
+
+---
+<div class="w-full h-full flex gap-4">
+    <aside class="w-80 h-[90vh]">
+        <slot name="sidebar"/>
+    </aside>
+    <div class="flex-1 min-h-[90vh] h-fit">
+        <slot name="content"/>
+    </div>
+</div>
+<script></script>

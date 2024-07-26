@@ -1,0 +1,28 @@
+---
+import Layout from '@core/layouts/layout.astro';
+import { ContentRoutes } from '@core/lib/routes';
+type Props = {
+
+}
+
+export async function getStaticPaths() {
+    return ContentRoutes.routes.map(route =>{
+        return{
+            params: {
+                type: route.route
+            }
+        }
+    })
+}
+
+const { type } = Astro.params
+const currentPath = Astro.url.pathname
+---
+<Layout title='CLEAN-UI'>
+    {currentPath}
+    {type}
+</Layout>
+
+<style>
+
+</style>

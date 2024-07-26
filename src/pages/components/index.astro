@@ -1,14 +1,29 @@
 ---
 import Layout from "@core/layouts/layout.astro"
-
+import WithSidebar from "@core/layouts/with-sidebar.astro"
+import {SidebarAstro} from "@core/components/sidebar"
+import { ContentRoutes } from "@core/lib/routes"
 ---
 
-<Layout title="CLEAN-UI">
+<Layout title="clean-ui">
 	<main class="flex flex-col gap-16">
-		
+		<WithSidebar>
+			<div  slot="sidebar">
+				<SidebarAstro client:idle>
+					<SidebarAstro.Items className="items-class">
+						{ContentRoutes.routes.map((route, index) => {
+							return (
+								<SidebarAstro.Item client:idle index={index} className="uppercase">
+									{route.name}
+								</SidebarAstro.Item>
+							);
+						})}
+					</SidebarAstro.Items>		
+				</SidebarAstro>
+			</div>
+			<div slot="content">
+				
+			</div>
+		</WithSidebar>	
 	</main>
-</Layout>
-
-<script>
-	
-</script>
+</Layout> 
