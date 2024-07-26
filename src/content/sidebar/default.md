@@ -1,7 +1,10 @@
+---
+title: "Default Sidebar - React"
+description: "Simple and modular sidebar using react-ts"
+---
 import { cn } from '@core/lib/utils';
 import React from 'react';
-import {useStore} from '@nanostores/react'
-import { active } from  './context/sidebar-store'
+import { SidebarContextProvider, useSidebarContext } from './context/sidebar-context';
 
 function SidebarContent({
     children,
@@ -11,8 +14,8 @@ function SidebarContent({
     className?: string
 }){
     return (
-        <div className={cn('flex-shrink-0', className)}>
-            {children}
+        <div className={cn('default styles', className)}>
+            {children} 
         </div>
     );
 }
@@ -40,9 +43,9 @@ function SidebarItem({
     className?: string,
     index: number
 }){
-    const $active = useStore(active)
+    const { handleItemClick, active } = useSidebarContext();
     return (
-        <div onClick={() => active.set(index)} key={index} className={cn(`${index === $active ? "font-bold" : "font-thin"} cursor-default`, className)}>
+        <div onClick={() => handleItemClick({ index })} key={index} className={cn(index === active ? "font-bold" : "", className)}>
             {children}
         </div>
     );
@@ -50,13 +53,15 @@ function SidebarItem({
 
 const SidebarComponent = ({ children, className }: { children: React.ReactNode, className?: string }) => {
     return (
-        <SidebarContent className={className}>
-            {children}
-        </SidebarContent>
+        <SidebarContextProvider>
+            <SidebarContent className={className}>
+                {children}
+            </SidebarContent>
+        </SidebarContextProvider>
     );
 };
 
-export const SidebarAstro = Object.assign(SidebarComponent, {
+export const SidebarReact = Object.assign(SidebarComponent, {
     Items: SidebarItems,
     Item: SidebarItem
 });

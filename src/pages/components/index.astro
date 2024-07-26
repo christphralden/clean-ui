@@ -1,29 +1,66 @@
 ---
-import Layout from "@core/layouts/layout.astro"
-import WithSidebar from "@core/layouts/with-sidebar.astro"
-import {SidebarAstro} from "@core/components/sidebar"
-import { ContentRoutes } from "@core/lib/routes"
+import Layout from '@core/layouts/layout.astro';
+import WithSidebar from '@core/layouts/with-sidebar.astro';
+import {SidebarAstro} from '@core/components/sidebar';
+import {ContentRoutes} from '@core/lib/routes';
+import {cleanUiHighlighter} from '@core/lib/themes/index';
+
+import {getEntry} from 'astro:content';
+const defaultSidebar = await getEntry('sidebar', 'default');
+const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
+	lang: 'typescript',
+	theme: 'clean-ui',
+});
 ---
 
 <Layout title="clean-ui">
 	<main class="flex flex-col gap-16">
 		<WithSidebar>
-			<div  slot="sidebar">
+			<div slot="sidebar">
 				<SidebarAstro client:idle>
-					<SidebarAstro.Items className="items-class">
-						{ContentRoutes.routes.map((route, index) => {
-							return (
-								<SidebarAstro.Item client:idle index={index} className="uppercase">
+					<SidebarAstro.Items>
+						{
+							ContentRoutes.routes.map((route, index) => (
+								<SidebarAstro.Item
+									client:idle
+									index={index}
+									className="uppercase"
+								>
 									{route.name}
 								</SidebarAstro.Item>
-							);
-						})}
-					</SidebarAstro.Items>		
+							))
+						}
+					</SidebarAstro.Items>
 				</SidebarAstro>
 			</div>
-			<div slot="content">
-				
+			<div
+				class="flex-1 flex flex-col gap-16 max-w-full p-4 code-container"
+				slot="content"
+			>
+				<div>
+					<h1 class="text-5xl  uppercase">{defaultSidebar.data.title}</h1>	
+				</div>
+				<div
+					class="w-full "
+					set:html={html}
+				/>
 			</div>
-		</WithSidebar>	
+		</WithSidebar>
 	</main>
-</Layout> 
+</Layout>
+
+<style is:global>
+	.code-container pre {
+		white-space: pre-wrap; 
+		word-break: break-word; 
+		width: 100%;
+		box-sizing: border-box; 
+	}
+
+	.code-container code {
+		display: block;
+		white-space: pre-wrap; 
+		word-break: break-word;
+		color: inherit;
+	}
+</style>
