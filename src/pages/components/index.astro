@@ -1,46 +1,37 @@
 ---
 import Layout from '@core/layouts/layout.astro';
 import WithSidebar from '@core/layouts/with-sidebar.astro';
-import {SidebarAstro} from '@core/components/sidebar';
-import {ContentRoutes} from '@core/lib/routes';
-import Snippet from '@core/components/snippet/snippet.astro';
+import { ContentRoutes } from '@core/lib/routes';
+import { CleanSidebar } from '@core/components/sidebar/clean-sidebar';
+type Props = {}
 
+export async function getStaticPaths() {
+    return ContentRoutes.routes.map(route => {
+        return {
+            params: {
+                type: route.route
+            }
+        };
+    });
+}
 
-
+const { type } = Astro.params;
+const currentPath = Astro.url.pathname;
 ---
-
 <Layout title="clean-ui">
-	<main class="flex flex-col gap-16">
-		<WithSidebar>
-			<div slot="sidebar">
-				<SidebarAstro client:idle>
-					<SidebarAstro.Items>
-						{
-							ContentRoutes.routes.map((route, index) => (
-								<SidebarAstro.Item
-									client:idle
-									index={index}
-									className="uppercase"
-								>
-									{route.name}
-								</SidebarAstro.Item>
-							))
-						}
-					</SidebarAstro.Items>
-				</SidebarAstro>
-			</div>
-			<div
-				class="flex-1 flex flex-col gap-16 max-w-full p-4"
-				slot="content"
-			>
-				<div class="flex w-full flex-col">
-					<Snippet 
-						collection='sidebar'
-						slug="default"
-					/>
-				</div>
-				
-			</div>
-		</WithSidebar>
-	</main>
+    <main class="flex flex-col gap-16">
+        <WithSidebar>
+            <div
+                class="flex-1 flex flex-col gap-16 max-w-full p-4"
+                slot="content"
+            >
+                <div class="flex w-full flex-col">
+                    {type}
+                </div>
+            </div>
+        </WithSidebar>
+    </main>
 </Layout>
+
+<style>
+</style>

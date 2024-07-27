@@ -1,5 +1,6 @@
 ---
 import Layout from '@core/layouts/layout.astro';
+import WithSidebar from '@core/layouts/with-sidebar.astro';
 import { ContentRoutes } from '@core/lib/routes';
 type Props = {
 
@@ -19,8 +20,18 @@ const { type } = Astro.params
 const currentPath = Astro.url.pathname
 ---
 <Layout title='CLEAN-UI'>
-    {currentPath}
-    {type}
+    <main class="flex flex-col gap-16">
+        <WithSidebar>
+            <div
+                class="flex-1 flex flex-col gap-16 max-w-full p-4"
+                slot="content"
+            >
+                <div class="flex w-full flex-col">
+                    <h1 class="text-3xl">{type}</h1> 
+                </div>
+            </div>
+        </WithSidebar>
+    </main>
 </Layout>
 
 <style>

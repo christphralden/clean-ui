@@ -1,6 +1,6 @@
 ---
 title: "Default Sidebar - React"
-description: "Simple and modular sidebar using react-ts"
+description: "Simple Low-Level Sidebar using react-ts"
 ---
 import { cn } from '@core/lib/utils';
 import React from 'react';
@@ -9,13 +9,13 @@ import { SidebarContextProvider, useSidebarContext } from './context/sidebar-con
 function SidebarContent({
     children,
     className
-}:{
-    children: React.ReactNode,
-    className?: string
-}){
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
     return (
         <div className={cn('default styles', className)}>
-            {children} 
+            {children}
         </div>
     );
 }
@@ -23,10 +23,10 @@ function SidebarContent({
 function SidebarItems({
     children,
     className
-}:{
-    children?: React.ReactNode,
-    className?: string
-}){
+}: {
+    children?: React.ReactNode;
+    className?: string;
+}) {
     return (
         <div className={cn("default styles", className)}>
             {children}
@@ -37,23 +37,35 @@ function SidebarItems({
 function SidebarItem({
     children,
     className,
-    index
-}:{
-    children?: React.ReactNode,
-    className?: string,
-    index: number
-}){
-    const { handleItemClick, active } = useSidebarContext();
+    route,
+    ...other
+}: {
+    children?: React.ReactNode;
+    className?: string;
+    route: string;
+    [x: string]: any;
+}) {
+    const { active } = useSidebarContext();
+    const isActive = active === route;
+
     return (
-        <div onClick={() => handleItemClick({ index })} key={index} className={cn(index === active ? "font-bold" : "", className)}>
+        <div {...other} className={cn(isActive ? "font-bold" : "font-thin", className)}>
             {children}
         </div>
     );
 }
 
-const SidebarComponent = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+const SidebarComponent = ({
+    children,
+    className,
+    currentPath
+}: {
+    children: React.ReactNode;
+    className?: string;
+    currentPath: string;
+}) => {
     return (
-        <SidebarContextProvider>
+        <SidebarContextProvider currentPath={currentPath}>
             <SidebarContent className={className}>
                 {children}
             </SidebarContent>

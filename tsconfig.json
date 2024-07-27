@@ -6,6 +6,9 @@
       "@core/*": [
         "modules/core/*"
       ],
+      "@sidebar/*": [
+        "modules/sidebar/*"
+      ],
       "@content/*": [
         "content/*"
       ]
