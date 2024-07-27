@@ -3,10 +3,10 @@ import Footer from '@core/components/footer/footer.astro';
 import Navbar from '@core/components/navbar/navbar.astro';
 
 interface Props {
-	title: string;
+	title?: string;
 }
 
-const {title} = Astro.props;
+const {title = "CLEAN-UI"} = Astro.props;
 ---
 
 <!doctype html>

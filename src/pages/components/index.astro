@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { type } = Astro.params;
 const currentPath = Astro.url.pathname;
 ---
-<Layout title="clean-ui">
+<Layout>
     <main class="flex flex-col gap-16">
         <WithSidebar>
             <div

@@ -1,6 +1,7 @@
 import { cn } from '@core/lib/utils';
 import React from 'react';
 import { SidebarContextProvider, useSidebarContext } from './context/sidebar-context';
+import type { RouteType } from '@sidebar/default';
 
 function SidebarContent({
     children,
@@ -54,14 +55,16 @@ function SidebarItem({
 const SidebarComponent = ({
     children,
     className,
-    currentPath
+    currentPath,
+    routes
 }: {
     children: React.ReactNode;
     className?: string;
     currentPath: string;
+    routes: RouteType
 }) => {
     return (
-        <SidebarContextProvider currentPath={currentPath}>
+        <SidebarContextProvider routes={routes} currentPath={currentPath}>
             <SidebarContent className={className}>
                 {children}
             </SidebarContent>

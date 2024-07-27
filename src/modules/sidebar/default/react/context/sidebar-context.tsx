@@ -1,5 +1,5 @@
 import { ContentRoutes } from '@core/lib/routes';
-import type { RouteName } from '@sidebar/default';
+import type { RouteName, RouteType } from '@sidebar/default';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface SidebarContextProps {
@@ -11,15 +11,17 @@ const SidebarContext = createContext<SidebarContextProps | null>(null);
 
 export function SidebarContextProvider({
     children,
-    currentPath
+    currentPath,
+    routes
 }: {
     children: React.ReactNode;
     currentPath: string;
+    routes: RouteType
 }) {
     const [active, setActive] = useState<RouteName | undefined>();
 
     useEffect(() => {
-        const currentRoute = currentPath.replace(ContentRoutes.baseUrl, '');
+        const currentRoute = currentPath.replace(routes.baseUrl, 'clean-ui.vercel.app/');
         const activeRoute = ContentRoutes.routes.find(route => route.route === currentRoute)?.route as RouteName;
         setActive(activeRoute);
     }, [currentPath]);

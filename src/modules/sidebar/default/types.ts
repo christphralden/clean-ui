@@ -7,7 +7,7 @@ export interface Route {
     route: RouteName;
 }
 
-export interface RouteType {
+export type RouteType = {
     baseUrl: string;
     routes: Route[];
 }

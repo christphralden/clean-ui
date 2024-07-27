@@ -7,7 +7,7 @@ const CleanSidebar = ({
 	currentPath: string
 }) => {
 	return (
-        <SidebarReact currentPath={currentPath}>
+        <SidebarReact routes={ContentRoutes} currentPath={currentPath}>
             <SidebarReact.Items>
                 {ContentRoutes.routes.map((route, index) => (
                     <SidebarReact.Item key={index} route={route.route} className="uppercase">
