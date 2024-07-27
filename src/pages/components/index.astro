@@ -3,15 +3,10 @@ import Layout from '@core/layouts/layout.astro';
 import WithSidebar from '@core/layouts/with-sidebar.astro';
 import {SidebarAstro} from '@core/components/sidebar';
 import {ContentRoutes} from '@core/lib/routes';
-import {cleanUiHighlighter} from '@core/lib/themes/index';
+import Snippet from '@core/components/snippet/snippet.astro';
 
-import {getEntry} from 'astro:content';
-import Separator from '@core/components/ui/separator.astro';
-const defaultSidebar = await getEntry('sidebar', 'default');
-const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
-	lang: 'typescript',
-	theme: 'clean-ui',
-});
+
+
 ---
 
 <Layout title="clean-ui">
@@ -35,40 +30,17 @@ const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
 				</SidebarAstro>
 			</div>
 			<div
-				class="flex-1 flex flex-col gap-16 max-w-full p-4 code-container"
+				class="flex-1 flex flex-col gap-16 max-w-full p-4"
 				slot="content"
 			>
 				<div class="flex w-full flex-col">
-					<div class="w-full">
-						<h1 class="text-5xl  uppercase ">{defaultSidebar.data.title}</h1>
-					</div>	
-					<div class="w-full flex items-end justify-start mb-8">
-						<h3 class="text-xl font-thin">{defaultSidebar.data.description}</h3>
-					</div>	
-					<Separator />
+					<Snippet 
+						collection='sidebar'
+						slug="default"
+					/>
 				</div>
 				
-				<div
-					class="w-full "
-					set:html={html}
-				/>
 			</div>
 		</WithSidebar>
 	</main>
 </Layout>
-
-<style is:global>
-	.code-container pre {
-		white-space: pre-wrap; 
-		word-break: break-word; 
-		width: 100%;
-		box-sizing: border-box; 
-	}
-
-	.code-container code {
-		display: block;
-		white-space: pre-wrap; 
-		word-break: break-word;
-		color: inherit;
-	}
-</style>

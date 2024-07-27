@@ -1,14 +1,53 @@
 ---
-import { Code } from 'astro:components'
-import { Prism } from '@astrojs/prism'
+import { cleanUiHighlighter } from "@core/lib/themes";
+import {getEntry} from 'astro:content';
+import type {CollectionTypes} from "@content/content.types"
+import { cn } from "@core/lib/utils";
+
+type Props = {
+    collection: CollectionTypes
+    slug: string
+    lang?: string,
+    theme?: string,
+	className?: string
+}
+
+const {
+    collection, 
+    slug,
+    lang="typescript", 
+    theme="clean-ui",
+	className
+} = Astro.props
+
+const defaultSidebar = await getEntry(collection, slug);
+
+if(!defaultSidebar) throw new Error("Collection is undefined")
+
+const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
+	lang,
+	theme,
+});
 
 ---
-<div>
-    <Code code={`const foo = 'bar';`} lang="js" theme={"tokyo-night"} />
-    <Prism lang="astro" code={`const foo = 'bar';`} />
-
+<div class={cn("code-container", className)}>
+    <div
+        class="w-full"
+        set:html={html}
+    />
 </div>
 
-<style>
+<style is:global>
+	.code-container pre {
+		white-space: pre-wrap; 
+		word-break: break-word; 
+		width: 100%;
+		box-sizing: border-box; 
+	}
 
-</style>
+	.code-container code {
+		display: block;
+		white-space: pre-wrap; 
+		word-break: break-word;
+		color: inherit;
+	}
