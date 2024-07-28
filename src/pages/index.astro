@@ -43,7 +43,7 @@ const headingLine2 = splitText({
 					ContentRoutes.routeGroups.map((routeGroup) => (
 						routeGroup.routes.map((route)=>(
 							<div class="staggerText">
-								<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+								<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
 									<div class="flex content ">
 										<p>{route.name}</p>
 									</div>
