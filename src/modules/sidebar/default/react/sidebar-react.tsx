@@ -47,7 +47,7 @@ function SidebarItem({
     const { active } = useSidebarContext();
     const isActive = route ? active == route : group ? true : false
     return (
-        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-slate-500", "flex",className)}>
+        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex",className)}>
             {children}
         </a>
     );

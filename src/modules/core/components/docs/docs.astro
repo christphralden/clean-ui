@@ -1,0 +1,53 @@
+---
+import type { CollectionTypes } from '@content/content.types'
+import { getEntry } from 'astro:content'
+import Snippet from '../snippet/snippet.astro'
+import { cn } from '@core/lib/utils'
+import Fallback from './fallback.astro'
+
+type Props = {
+    className?: string
+    collection: CollectionTypes
+    slug: string
+    lang?: string
+}
+
+const {
+    className,
+    collection, 
+    slug,
+    lang="typescript", 
+} = Astro.props
+
+const page = await getEntry(collection, slug);
+
+---
+<div class={cn("w-full h-fit", className)}>
+    
+    <section class="flex flex-col gap-4">
+    {page ?
+        <>
+            <h1 class="text-3xl">{page.data.title}</h1>
+            {page.data.content.map(block => {
+                switch (block.type) {
+                    case 'header':
+                        return <h1 class="text-xl">{block.value}</h1>;
+                    case 'description':
+                        return <p class="text-xl w-3/4 text-gray-600">{block.value}</p>;
+                    case 'code':
+                        return <Snippet lang={lang} code={block.value} className='m-8'/>
+                    default:
+                        return null;
+                }}
+            )}
+        </>     
+        :
+        <>
+            <Fallback/>
+        </>
+    }
+</div>
+
+<style>
+
+</style>

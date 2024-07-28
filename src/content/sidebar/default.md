@@ -1,11 +1,9 @@
 ---
 title: "Default Sidebar - React"
 description: "Simple Low-Level Sidebar using react-ts"
-content:
-  - type: "header"
-    value: "Default Sidebar"
+content: 
   - type: "description"
-    value: "This is a basic, low-level sidebar component. It gives you the basic foundation to customize and build your own personal sidebar.To integrate, just define some routes. Examples will be shown below"
+    value: "A simple, modular sidebar for easy customization. Build your own sidebar by defining routes. See examples below."
   - type: "code"
     value: |
         import { cn } from '@core/lib/utils';

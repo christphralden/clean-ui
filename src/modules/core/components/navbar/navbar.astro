@@ -1,5 +1,6 @@
 ---
 import { NavbarRoutes } from "@core/lib/routes";
+import { padNumber } from "@core/lib/utils";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -15,7 +16,7 @@ const currentPath = Astro.url.pathname;
                 return(
                     <a href={isActive ? "#" : routes.route[0]} class={`uppercase hover:underline underline-offset-4 flex text-nowrap items-center tracking-wider text-xl `}>
                         <p>{routes.name}</p>
-                        <p class="">—0{i+1}</p>
+                        <p class="">—{padNumber(i+1)}</p>
                     </a>
             )})
         }

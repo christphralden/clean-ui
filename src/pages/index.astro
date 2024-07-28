@@ -2,7 +2,7 @@
 import Layout from '@core/layouts/layout.astro';
 import Separator from '@core/components/ui/separator.astro';
 import {ContentRoutes} from '@core/lib/routes';
-import {splitText} from '@core/lib/utils/index';
+import {splitText, padNumber} from '@core/lib/utils';
 import {ArrowUpRight} from '@geist-ui/icons';
 import {heading} from "@core/content/index/header.json"
 
@@ -48,19 +48,18 @@ const headingLine2 = splitText({
 			<div class="flex flex-col relative staggerText hidden full-width-component">
 				<Separator className='staggerText'/>
 				{ContentRoutes.routeGroups.map((routeGroup) =>
-					routeGroup.routes.map((route) => (
-						<div class="staggerText">
-							<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
-								<div class="flex content">
-									<p>{route.name}</p>
-								</div>
-								<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
-									<ArrowUpRight color='white'/>
-								</div>
-							</a>
-							<Separator className='content'/>
-						</div>
-					))
+					<div class="staggerText">
+						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+							<div class="flex content">
+								<p>{routeGroup.group}</p>
+								<p>—{padNumber(routeGroup.routes.length)}</p>
+							</div>
+							<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+								<ArrowUpRight color='white'/>
+							</div>
+						</a>
+						<Separator className='content'/>
+					</div>
 				)}
 			</div>
 		</section>

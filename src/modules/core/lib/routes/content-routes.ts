@@ -22,6 +22,16 @@ export const ContentRoutes = {
                     route: "default"
                 },
             ]
+        },
+        {
+            group:"micro-interactions",
+            routes:[
+                {
+                    name: "variable hover",
+                    route: "variable-hover"
+                }
+            ]
+        
         }
     ]
     
