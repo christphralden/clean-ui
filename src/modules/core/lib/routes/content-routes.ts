@@ -1,4 +1,4 @@
-const ContentRoutes = {
+export const ContentRoutes = {
     baseUrl:"/components/",
     routeGroups:[
         {
@@ -26,5 +26,3 @@ const ContentRoutes = {
     ]
     
 }
-
-export default ContentRoutes

@@ -1,4 +1,4 @@
-const NavbarRoutes = [
+export const NavbarRoutes = [
     {
         name:"Home",
         route:["/"]
@@ -16,5 +16,3 @@ const NavbarRoutes = [
     //     route:["https://christphralden.vercel.app"]
     // }
 ]
-
-export default NavbarRoutes 
