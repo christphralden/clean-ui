@@ -78,7 +78,7 @@ const headingLine2 = splitText({
 			className: '.staggerText',
 			timing: 0.02,
 			duration: 0.4,
-		});
+		}).delay(0.05);
 
 		skewedSlideIn({
 			className: '.content',
@@ -87,11 +87,11 @@ const headingLine2 = splitText({
 			x: -100,
 			skewX: -90,
 		}).delay(0.1);
-	});
 
-	document.addEventListener('DOMContentLoaded', () => {
 		variableFontHover()	
 	});
+
+	
 </script>
 
 <style is:global>
