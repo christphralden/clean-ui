@@ -40,19 +40,20 @@ const headingLine2 = splitText({
 			<div class="flex flex-col relative staggerText hidden full-width-component">
 				<Separator className='staggerText'/>
 				{
-					ContentRoutes.routes.map((routes) => (
-						<div class="staggerText">
-							<a href={`${ContentRoutes.baseUrl}${routes.route}`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
-								<div class="flex content ">
-									<p>{routes.name}</p>
-									<p>—12</p>
-								</div>
-								<div class="group-hover:opacity-100 transition-opacity ease-out duration-100">
-									<ArrowUpRight color='white'/>
-								</div>
-							</a>
-							<Separator className='content'/>
-						</div>
+					ContentRoutes.routeGroups.map((routeGroup) => (
+						routeGroup.routes.map((route)=>(
+							<div class="staggerText">
+								<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+									<div class="flex content ">
+										<p>{route.name}</p>
+									</div>
+									<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+										<ArrowUpRight color='white'/>
+									</div>
+								</a>
+								<Separator className='content'/>
+							</div>
+						))	
 					))
 				}
 			</div>

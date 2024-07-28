@@ -1,37 +1,31 @@
 ---
 import { cleanUiHighlighter } from "@core/lib/themes";
-import {getEntry} from 'astro:content';
-import type {CollectionTypes} from "@content/content.types"
 import { cn } from "@core/lib/utils";
 
 type Props = {
-  collection: CollectionTypes
-  slug: string
+  code: string,
   lang?: string,
   theme?: string,
   className?: string
 }
 
 const {
-  collection, 
-  slug,
+  code,
   lang="typescript", 
   theme="clean-ui",
   className
 } = Astro.props
 
-const defaultSidebar = await getEntry(collection, slug);
-
-if(!defaultSidebar) throw new Error("Collection is undefined")
-
-const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
+const highlighter = cleanUiHighlighter;
+const html = highlighter.codeToHtml(code, {
   lang,
   theme,
 });
 
+
 ---
 <div class={cn("code-container", className)}>
-  <div
+  <Fragment
     class="w-full"
     set:html={html}
   />

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { RouteName, RouteType } from '@sidebar/default';
+import type { RouteName } from '@sidebar/default';
 
 interface SidebarContextProps {
     active: RouteName | undefined;
@@ -11,17 +11,12 @@ const SidebarContext = createContext<SidebarContextProps | null>(null);
 export function SidebarContextProvider({
     children,
     currentPath,
-    routes
 }: {
     children: React.ReactNode;
     currentPath: string;
-    routes: RouteType;
 }) {
-    const baseUrl = routes.baseUrl || '';
-    const currentRoute = currentPath.replace(baseUrl, '');
-    const initialActiveRoute = routes.routes.find(route => currentRoute.startsWith(route.route))?.route as RouteName;
 
-    const [active, setActive] = useState<RouteName | undefined>(initialActiveRoute);
+    const [active, setActive] = useState<RouteName | undefined>(currentPath);
 
     const handleChange = (routeName: RouteName) => {
         setActive(routeName);

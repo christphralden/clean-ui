@@ -1,7 +1,6 @@
 import { cn } from '@core/lib/utils';
 import React from 'react';
 import { SidebarContextProvider, useSidebarContext } from './context/sidebar-context';
-import type { RouteType } from '@sidebar/default';
 
 function SidebarContent({
     children,
@@ -11,7 +10,7 @@ function SidebarContent({
     className?: string;
 }) {
     return (
-        <div className={cn('default styles', className)}>
+        <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between', className)}>
             {children}
         </div>
     );
@@ -25,7 +24,7 @@ function SidebarItems({
     className?: string;
 }) {
     return (
-        <div className={cn("default styles", className)}>
+        <div className={cn("flex flex-col", className)}>
             {children}
         </div>
     );
@@ -35,19 +34,21 @@ function SidebarItem({
     children,
     className,
     route,
+    group,
     ...other
 }: {
     children?: React.ReactNode;
     className?: string;
-    route: string;
+    route?: string;
+    group?: boolean;
     [x: string]: any;
 }) {
     const { active } = useSidebarContext();
-    const isActive = active === route;
+    const isActive = route ? active === route : group ? true : false;
     return (
-        <div {...other} className={cn(isActive ? "font-bold" : "font-thin", className)}>
+        <a {...other} href={route} className={cn(` ${isActive ? "font-normal text-black" : "font-thin text-slate-500"}`, className)}>
             {children}
-        </div>
+        </a>
     );
 }
 
@@ -55,15 +56,13 @@ const SidebarComponent = ({
     children,
     className,
     currentPath,
-    routes
 }: {
     children: React.ReactNode;
     className?: string;
     currentPath: string;
-    routes: RouteType
 }) => {
     return (
-        <SidebarContextProvider routes={routes} currentPath={currentPath}>
+        <SidebarContextProvider currentPath={currentPath} >
             <SidebarContent className={className}>
                 {children}
             </SidebarContent>

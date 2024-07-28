@@ -7,14 +7,14 @@ const NavbarRoutes = [
         name:"Components",
         route:["/components"]
     },
-    {
-        name:"Sites",
-        route:["/sites"]
-    },
-    {
-        name:"christphralden",
-        route:["https://christphralden.vercel.app"]
-    }
+    // {
+    //     name:"Sites",
+    //     route:["/sites"]
+    // },
+    // {
+    //     name:"christphralden",
+    //     route:["https://christphralden.vercel.app"]
+    // }
 ]
 
 export default NavbarRoutes 

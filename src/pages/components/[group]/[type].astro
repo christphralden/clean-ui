@@ -1,22 +1,22 @@
 ---
 import Snippet from '@core/components/snippet/snippet.astro';
+import Docs from '@core/components/ui/docs.astro';
 import Layout from '@core/layouts/layout.astro';
 import WithSidebar from '@core/layouts/with-sidebar.astro';
 import { ContentRoutes } from '@core/lib/routes';
-type Props = {
-
-}
 
 export async function getStaticPaths() {
-    return ContentRoutes.routes.map(route =>{
-        return{
+    const paths = ContentRoutes.routeGroups.flatMap(group => 
+        group.routes.map(route => ({
             params: {
-                type: route.route
+                group: group.group,
+                type: route.route 
             }
-        }
-    })
-}
+        }))
+    );
 
+    return paths
+}
 const { type } = Astro.params
 ---
 <Layout >
@@ -28,7 +28,7 @@ const { type } = Astro.params
             >
                 <div class="flex w-full flex-col gap-16">
                     <h1 class="text-5xl uppercase">{type}</h1>
-                    <Snippet collection='sidebar' slug='default'/> 
+                    <Docs collection='sidebar' slug='default'></Docs> 
                 </div>
             </div>
         </WithSidebar>

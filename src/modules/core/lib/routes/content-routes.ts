@@ -1,48 +1,30 @@
 const ContentRoutes = {
     baseUrl:"/components/",
-    routes:[
+    routeGroups:[
         {
-            name: "navbar",
-            route: "navbar"
+            group: "sidebar",
+            routes:[
+                {
+                    name: "default",
+                    route: "default"
+                },
+                {
+                    name: "snellberg",
+                    route: "snellberg"
+                },
+            ]
         },
         {
-            name: "footer",
-            route: "footer"
-        },
-        {
-            name: "onboarding",
-            route: "onboarding"
-        },
-        {
-            name: "sidebar",
-            route: "sidebar"
-        },
-        {
-            name: "landing",
-            route: "landing"
-        },
-        {
-            name: "scroll interactions",
-            route: "scroll-interactions"
-        },
-        {
-            name: "micro interactions",
-            route: "micro-interactions"
-        },
-        {
-            name: "form",
-            route: "form"
-        },
-        {
-            name: "card",
-            route: "card"
-        },
-        {
-            name: "button",
-            route: "button"
+            group: "navbar",
+            routes:[
+                {
+                    name: "default",
+                    route: "default"
+                },
+            ]
         }
     ]
-
+    
 }
 
 export default ContentRoutes

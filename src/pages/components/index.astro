@@ -1,22 +1,9 @@
 ---
 import Layout from '@core/layouts/layout.astro';
 import WithSidebar from '@core/layouts/with-sidebar.astro';
-import { ContentRoutes } from '@core/lib/routes';
-import { CleanSidebar } from '@core/components/sidebar/clean-sidebar';
-type Props = {}
 
-export async function getStaticPaths() {
-    return ContentRoutes.routes.map(route => {
-        return {
-            params: {
-                type: route.route
-            }
-        };
-    });
-}
 
-const { type } = Astro.params;
-const currentPath = Astro.url.pathname;
+
 ---
 <Layout>
     <main class="flex flex-col gap-16">
@@ -25,9 +12,7 @@ const currentPath = Astro.url.pathname;
                 class="flex-1 flex flex-col gap-16 max-w-full p-4"
                 slot="content"
             >
-                <div class="flex w-full flex-col">
-                    {type}
-                </div>
+                
             </div>
         </WithSidebar>
     </main>

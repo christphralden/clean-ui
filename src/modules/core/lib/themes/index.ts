@@ -1,1 +1,1 @@
-export {cleanUiHighlighter} from './shiki'
+export { cleanUiHighlighter } from './shiki'
