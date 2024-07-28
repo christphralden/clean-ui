@@ -1,6 +1,6 @@
 import { ContentRoutes } from "@core/lib/routes";
 
-export type RouteName = typeof ContentRoutes.routeGroup[number]['routes'][number]['route'];
+export type RouteName = typeof ContentRoutes.routeGroups[number]['routes'][number]['route'];
 
 
 export interface Route {
