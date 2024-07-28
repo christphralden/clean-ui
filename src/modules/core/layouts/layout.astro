@@ -30,7 +30,7 @@ const {title = "CLEAN-UI"} = Astro.props;
 			name="generator"
 			content={Astro.generator}
 		/>
-		<link rel="stylesheet" href="/src/styles/typography.css">
+		<link rel="stylesheet" href="/styles/typography.css">
 		<title>{title}</title>
 	</head>
 	<body class="bg-background font-restart">
@@ -92,7 +92,7 @@ const {title = "CLEAN-UI"} = Astro.props;
 			touchMultiplier: 2,
 			normalizeWheel: true,
 	}
-	// const locomotiveScroll = new LocomotiveScroll(options);
+	const locomotiveScroll = new LocomotiveScroll(options);
 
 	document.addEventListener("DOMContentLoaded", ()=>{
 		window.scrollTo(0,0)
