@@ -9,9 +9,13 @@ function SidebarContent({
     children: React.ReactNode;
     className?: string;
 }) {
+    const {active} = useSidebarContext()
     return (
         <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between', className)}>
-            {children}
+            <div>
+                {active}
+                {children}
+            </div> 
         </div>
     );
 }
@@ -45,12 +49,14 @@ function SidebarItem({
 }) {
     const { active } = useSidebarContext();
     const isActive = route ? active === route : group ? true : false;
+    console.log('Checking active:', { route, active, isActive }); // Debugging line
     return (
         <a {...other} href={route} className={cn(` ${isActive ? "font-normal text-black" : "font-thin text-slate-500"}`, className)}>
             {children}
         </a>
     );
 }
+
 
 const SidebarComponent = ({
     children,
@@ -64,7 +70,10 @@ const SidebarComponent = ({
     return (
         <SidebarContextProvider currentPath={currentPath} >
             <SidebarContent className={className}>
+                <div>
+                {currentPath}
                 {children}
+                </div> 
             </SidebarContent>
         </SidebarContextProvider>
     );
