@@ -45,10 +45,17 @@ const page = await getEntry(collection, slug);
                 }}
             )}
             </div>
+
+            <div>
+                <h3 class="text-xl">Brought to you by @{page.data.creator}</h3>
+            </div>
         </>     
         :
         <>
             <Fallback/>
         </>
     }
+    </section>
+
+    
 </div>

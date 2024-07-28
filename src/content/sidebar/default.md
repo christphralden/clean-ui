@@ -16,13 +16,13 @@ content:
         import { SidebarReact } from '@sidebar/default';
 
         export const CleanSidebar = ({
-            currentPath // you wouldn't need this in react, just use the built in router to get the current path
+            currentPath // you wouldn't need this in React, just use the built in router to get the current path
         }: {
             currentPath: string
         }) => {
             return (
                 <SidebarReact currentPath={currentPath} >
-                    <SidebarReact.Items className='gap-6 text-base'> // Items are container for Item
+                    <SidebarReact.Items className='gap-6'> // Items are container for Item
                         {ContentRoutes.routeGroups.map((routeGroup) => (
                             <SidebarReact.Items key={routeGroup.group}>
 
@@ -31,7 +31,7 @@ content:
                                     <h3>{routeGroup.group}</h3>
                                 </SidebarReact.Item>
 
-                                <SidebarReact.Items className='gap-2'>
+                                <SidebarReact.Items className='gap-1'>
                                     {routeGroup.routes.map((route) => (  // Map the routes inside the group
                                         <SidebarReact.Item // Use Item as a wrapper for your child 
                                             key={route.route} 
@@ -49,6 +49,7 @@ content:
                 </SidebarReact>
             );
         }
+
 
   - type: "header"
     value: "Copy and paste the following code into your project"
@@ -112,7 +113,6 @@ content:
             );
         }
 
-
         const SidebarComponent = ({
             children,
             className,
@@ -137,7 +137,6 @@ content:
         });
 
         export type RouteName = string
-
         export interface Route {
             name: string;
             route: RouteName;
@@ -150,8 +149,6 @@ content:
             baseUrl: string;
             routeGroup: RouteGroup[];
         }
-
-
 
 
   - type: "header"
@@ -200,6 +197,8 @@ content:
             }
             return context;
         };
+
+
   - type: "header"
     value: "Define routes for your sidebar"
   - type: "description"
@@ -235,6 +234,20 @@ content:
                 }
             ]
         }
+
+
+  - type: "header"
+    value: "Extra clean tips"
+  - type: "description"
+    value: "Define index.ts as an entry point for your imports"
+  - type: "code"
+    filename: "index.ts"
+    lang: "typescript"
+    value: |
+        export { SidebarReact } from './react/sidebar-react' // adjust path
+        export type { RouteName, RouteGroup, RouteMap } from './react/sidebar-react' // adjust path
+        export { SidebarContextProvider, useSidebarContext } from './react/context/sidebar-context' // adjust path
+        
 
 
 ---

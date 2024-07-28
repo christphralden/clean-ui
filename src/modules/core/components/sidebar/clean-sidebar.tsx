@@ -8,14 +8,14 @@ export const CleanSidebar = ({
 }) => {
     return (
         <SidebarReact currentPath={currentPath} >
-            <SidebarReact.Items className='gap-6 text-base'>
+            <SidebarReact.Items className='gap-6'>
                 {ContentRoutes.routeGroups.map((routeGroup) => (
                     <SidebarReact.Items key={routeGroup.group}>
                         <SidebarReact.Item group className='uppercase font-normal mb-2'>
                             <h3>{routeGroup.group}</h3>
                         </SidebarReact.Item>
 
-                        <SidebarReact.Items className='gap-2'>
+                        <SidebarReact.Items className='gap-1'>
                             {routeGroup.routes.map((route) => (
                                 <SidebarReact.Item 
                                     key={route.route} 

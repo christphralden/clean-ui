@@ -31,7 +31,32 @@ export const ContentRoutes = {
                     route: "variable-hover"
                 }
             ]
-        
+        },
+        {
+            group:"form",
+            routes:[
+                {
+                    name: "Authentication",
+                    route: "authentication"
+                },
+                {
+                    name: "Single Input",
+                    route: "single-input"
+                },
+                {
+                    name: "Text Area",
+                    route: "text-area"
+                }
+            ]
+        },
+        {
+            group:"layout",
+            routes:[
+                {
+                    name: "hero section",
+                    route: "hero-section"
+                }
+            ]
         }
     ]
     
