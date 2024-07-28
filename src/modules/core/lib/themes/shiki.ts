@@ -1,6 +1,6 @@
 import {createHighlighter} from 'shiki';
 
-const cleanUiHighlighter = await createHighlighter({
+export const cleanUiHighlighter = await createHighlighter({
 	langs: ['javascript', 'astro', 'typescript'],
 	themes: [
 		{
@@ -100,4 +100,3 @@ const cleanUiHighlighter = await createHighlighter({
 	],
 });
 
-export {cleanUiHighlighter};

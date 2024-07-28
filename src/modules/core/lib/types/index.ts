@@ -1,0 +1,1 @@
+export {SidebarSchema} from "./content.schema"

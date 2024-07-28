@@ -1,7 +1,7 @@
 import { ContentRoutes } from '@core/lib/routes';
 import { SidebarReact} from '@sidebar/default';
 
-const CleanSidebar = ({
+export const CleanSidebar = ({
 	currentPath
 }:{
 	currentPath: string
@@ -18,5 +18,3 @@ const CleanSidebar = ({
         </SidebarReact>
     );
 };
-
-export {CleanSidebar}
