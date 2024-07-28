@@ -24,8 +24,10 @@ function SidebarItems({
     children?: React.ReactNode;
     className?: string;
 }) {
+    const { active } = useSidebarContext();
     return (
         <div className={cn("default styles", className)}>
+            <p>active: {active}</p> 
             {children}
         </div>
     );

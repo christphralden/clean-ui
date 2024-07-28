@@ -5,19 +5,19 @@ import type {CollectionTypes} from "@content/content.types"
 import { cn } from "@core/lib/utils";
 
 type Props = {
-    collection: CollectionTypes
-    slug: string
-    lang?: string,
-    theme?: string,
-	className?: string
+  collection: CollectionTypes
+  slug: string
+  lang?: string,
+  theme?: string,
+  className?: string
 }
 
 const {
-    collection, 
-    slug,
-    lang="typescript", 
-    theme="clean-ui",
-	className
+  collection, 
+  slug,
+  lang="typescript", 
+  theme="clean-ui",
+  className
 } = Astro.props
 
 const defaultSidebar = await getEntry(collection, slug);
@@ -25,16 +25,16 @@ const defaultSidebar = await getEntry(collection, slug);
 if(!defaultSidebar) throw new Error("Collection is undefined")
 
 const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
-	lang,
-	theme,
+  lang,
+  theme,
 });
 
 ---
 <div class={cn("code-container", className)}>
-    <div
-        class="w-full"
-        set:html={html}
-    />
+  <div
+    class="w-full"
+    set:html={html}
+  />
 </div>
 
 <style is:global>
@@ -50,4 +50,5 @@ const html = cleanUiHighlighter.codeToHtml(defaultSidebar.body, {
 		white-space: pre-wrap; 
 		word-break: break-word;
 		color: inherit;
-	}
+}
+</style>

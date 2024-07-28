@@ -1,10 +1,9 @@
-import { ContentRoutes } from '@core/lib/routes';
+import React, { createContext, useContext, useState } from 'react';
 import type { RouteName, RouteType } from '@sidebar/default';
-import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface SidebarContextProps {
     active: RouteName | undefined;
-    handleChange: (routeName: RouteName) => any;
+    handleChange: (routeName: RouteName) => void;
 }
 
 const SidebarContext = createContext<SidebarContextProps | null>(null);
@@ -16,19 +15,17 @@ export function SidebarContextProvider({
 }: {
     children: React.ReactNode;
     currentPath: string;
-    routes: RouteType
+    routes: RouteType;
 }) {
-    const [active, setActive] = useState<RouteName | undefined>();
+    const baseUrl = routes.baseUrl || '';
+    const currentRoute = currentPath.replace(baseUrl, '');
+    const initialActiveRoute = routes.routes.find(route => currentRoute.startsWith(route.route))?.route as RouteName;
 
-    useEffect(() => {
-        const currentRoute = currentPath.replace(routes.baseUrl, 'clean-ui.vercel.app/');
-        const activeRoute = ContentRoutes.routes.find(route => route.route === currentRoute)?.route as RouteName;
-        setActive(activeRoute);
-    }, [currentPath]);
+    const [active, setActive] = useState<RouteName | undefined>(initialActiveRoute);
 
-    function handleChange(routeName: RouteName) {
+    const handleChange = (routeName: RouteName) => {
         setActive(routeName);
-    }
+    };
 
     return (
         <SidebarContext.Provider value={{ active, handleChange }}>
@@ -43,4 +40,4 @@ export const useSidebarContext = () => {
         throw new Error("useSidebarContext must be used within a SidebarContextProvider");
     }
     return context;
-}
+};
