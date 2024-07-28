@@ -12,6 +12,8 @@ const contentBlockSchema = z.union([
 	}),
 	z.object({
 		type: z.literal('code'),
+		filename: z.string(),
+		lang:z.string(),
 		value: z.string(),
 	}),
 ]);
@@ -21,6 +23,8 @@ const sidebarCollection = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		lang: z.string(),
+		creator: z.string(),
 		content: z.array(contentBlockSchema),
 	}),
 });

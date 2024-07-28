@@ -3,6 +3,7 @@ import { cleanUiHighlighter } from "@core/lib/themes";
 import { cn } from "@core/lib/utils";
 
 type Props = {
+  filename?: string,
   code: string,
   lang?: string,
   theme?: string,
@@ -11,6 +12,7 @@ type Props = {
 
 const {
   code,
+  filename,
   lang="typescript", 
   theme="clean-ui",
   className
@@ -24,11 +26,16 @@ const html = highlighter.codeToHtml(code, {
 
 
 ---
-<div class={cn("code-container", className)}>
-  <Fragment
-    class="w-full"
-    set:html={html}
-  />
+<div class={cn("code-container rounded-lg overflow-clip bg-white ", className)}>
+  <div class="w-full h-12 text-sm px-8 flex items-center justify-start font-mono">
+    {filename} - {lang}
+  </div>
+  <div class="p-8 pt-4">
+      <Fragment
+      class="w-full"
+      set:html={html}
+    />
+  </div> 
 </div>
 
 <style is:global>
@@ -44,5 +51,6 @@ const html = highlighter.codeToHtml(code, {
 		white-space: pre-wrap; 
 		word-break: break-word;
 		color: inherit;
+    font-size: 14px;
 }
 </style>

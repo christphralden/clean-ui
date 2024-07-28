@@ -1,6 +1,6 @@
 import { cn } from '@core/lib/utils';
 import React from 'react';
-import { SidebarContextProvider, useSidebarContext } from './context/sidebar-context';
+import { SidebarContextProvider, useSidebarContext } from '@sidebar/default';
 
 function SidebarContent({
     children,
@@ -9,9 +9,8 @@ function SidebarContent({
     children: React.ReactNode;
     className?: string;
 }) {
-    const {active} = useSidebarContext()
     return (
-        <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between', className)}>
+        <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between select-none', className)}>
             {children}
         </div>
     );
@@ -47,7 +46,7 @@ function SidebarItem({
     const { active } = useSidebarContext();
     const isActive = route ? active == route : group ? true : false
     return (
-        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex",className)}>
+        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex" ,className)}>
             {children}
         </a>
     );
@@ -76,3 +75,19 @@ export const SidebarReact = Object.assign(SidebarComponent, {
     Items: SidebarItems,
     Item: SidebarItem
 });
+
+export type RouteName = string
+
+export interface Route {
+    name: string;
+    route: RouteName;
+}
+export interface RouteGroup{
+    group:string,
+    routes: Route[]
+}
+export type RouteMap = {
+    baseUrl: string;
+    routeGroup: RouteGroup[];
+}
+

@@ -7,7 +7,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <div class="w-full h-full flex gap-4">
-    <aside class="w-fit flex-shrink-0 h-auto">
+    <aside class="w-fit flex-shrink-0 h-auto select-none">
         <CleanSidebar currentPath={currentPath} client:load />
     </aside>
     <div class="flex-1 min-h-[90vh] h-fit">

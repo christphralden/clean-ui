@@ -16,7 +16,7 @@ const headingLine2 = splitText({
 
 <Layout>
 	<main class="flex flex-col gap-16">
-		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col font-regrade font-medium">
+		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col font-regrade font-medium tracking-wide select-none">
 			<div class="flex gap-2 xl:gap-3">
 				{headingLine1.map((word) => {
 					return (
@@ -49,7 +49,7 @@ const headingLine2 = splitText({
 				<Separator className='staggerText'/>
 				{ContentRoutes.routeGroups.map((routeGroup) =>
 					<div class="staggerText">
-						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].name}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
 							<div class="flex content">
 								<p>{routeGroup.group}</p>
 								<p>—{padNumber(routeGroup.routes.length)}</p>

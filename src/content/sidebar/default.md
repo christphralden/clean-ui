@@ -1,15 +1,66 @@
 ---
-title: "Default Sidebar - React"
-description: "Simple Low-Level Sidebar using react-ts"
+title: "Default Sidebar"
+description: "A simple, modular sidebar for easy customization. Build your own sidebar by defining styles and routes."
+lang: "react-ts"
+creator: "christphralden"
 content: 
+  - type: "header"
+    value: "Implementation - Astro"
   - type: "description"
-    value: "A simple, modular sidebar for easy customization. Build your own sidebar by defining routes. See examples below."
+    value: "How to use this component in Astro"
   - type: "code"
+    filename: "custom-sidebar.tsx"
+    lang: "typescript"
+    value: |
+        import { ContentRoutes } from '@core/lib/routes';
+        import { SidebarReact } from '@sidebar/default';
+
+        export const CleanSidebar = ({
+            currentPath // you wouldn't need this in react, just use the built in router to get the current path
+        }: {
+            currentPath: string
+        }) => {
+            return (
+                <SidebarReact currentPath={currentPath} >
+                    <SidebarReact.Items className='gap-6 text-base'> // Items are container for Item
+                        {ContentRoutes.routeGroups.map((routeGroup) => (
+                            <SidebarReact.Items key={routeGroup.group}>
+
+                                // Mark a group by adding group parameter
+                                <SidebarReact.Item group className='uppercase font-normal mb-2'> 
+                                    <h3>{routeGroup.group}</h3>
+                                </SidebarReact.Item>
+
+                                <SidebarReact.Items className='gap-2'>
+                                    {routeGroup.routes.map((route) => (  // Map the routes inside the group
+                                        <SidebarReact.Item // Use Item as a wrapper for your child 
+                                            key={route.route} 
+                                            route={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} 
+                                            className="capitalize"
+                                        >
+                                            {route.name}
+                                        </SidebarReact.Item>
+                                    ))}
+                                </SidebarReact.Items>
+                            </SidebarReact.Items>
+
+                        ))}
+                    </SidebarReact.Items> 
+                </SidebarReact>
+            );
+        }
+
+  - type: "header"
+    value: "Copy and paste the following code into your project"
+  - type: "description"
+    value: "Component for the sidebar"
+  - type: "code"
+    filename: "sidebar.tsx"
+    lang: "typescript"
     value: |
         import { cn } from '@core/lib/utils';
         import React from 'react';
-        import { SidebarContextProvider, useSidebarContext } from './context/sidebar-context';
-        import type { RouteType } from '@sidebar/default';
+        import { SidebarContextProvider, useSidebarContext } from '@sidebar/default';
 
         function SidebarContent({
             children,
@@ -19,7 +70,7 @@ content:
             className?: string;
         }) {
             return (
-                <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between', className)}>
+                <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between select-none', className)}>
                     {children}
                 </div>
             );
@@ -43,35 +94,36 @@ content:
             children,
             className,
             route,
+            group = false,
             ...other
         }: {
             children?: React.ReactNode;
             className?: string;
-            route: string;
+            route?: string;
+            group?: boolean;
             [x: string]: any;
         }) {
             const { active } = useSidebarContext();
-            const isActive = active === route;
+            const isActive = route ? active == route : group ? true : false
             return (
-                <div {...other} className={cn(isActive ? "font-bold" : "font-thin", className)}>
+                <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex" ,className)}>
                     {children}
-                </div>
+                </a>
             );
         }
+
 
         const SidebarComponent = ({
             children,
             className,
             currentPath,
-            routes
         }: {
             children: React.ReactNode;
             className?: string;
             currentPath: string;
-            routes: RouteType
         }) => {
             return (
-                <SidebarContextProvider routes={routes} currentPath={currentPath}>
+                <SidebarContextProvider currentPath={currentPath} >
                     <SidebarContent className={className}>
                         {children}
                     </SidebarContent>
@@ -83,5 +135,106 @@ content:
             Items: SidebarItems,
             Item: SidebarItem
         });
+
+        export type RouteName = string
+
+        export interface Route {
+            name: string;
+            route: RouteName;
+        }
+        export interface RouteGroup{
+            group:string,
+            routes: Route[]
+        }
+        export type RouteMap = {
+            baseUrl: string;
+            routeGroup: RouteGroup[];
+        }
+
+
+
+
+  - type: "header"
+    value: "Copy and paste the following code into your project"
+  - type: "description"
+    value: "Use this sidebar context to share states or customize the render function to dynamically replace content within the content div for a single-page experience."
+  - type: "code"
+    filename: "context/sidebar-context.tsx"
+    lang: "typescript"
+    value: |
+        import React, { createContext, useContext, useState } from 'react';
+        import type { RouteName } from '@sidebar/default'; // adjust import
+
+        interface SidebarContextProps {
+            active: RouteName | undefined;
+            handleChange: (routeName: RouteName) => void;
+        }
+
+        const SidebarContext = createContext<SidebarContextProps | null>(null);
+
+        export function SidebarContextProvider({
+            children,
+            currentPath,
+        }: {
+            children: React.ReactNode;
+            currentPath: string;
+        }) {
+
+            const [active, setActive] = useState<RouteName | undefined>(currentPath);
+
+            const handleChange = (routeName: RouteName) => {
+                setActive(routeName);
+            };
+
+            return (
+                <SidebarContext.Provider value={{ active, handleChange }}>
+                    {children}
+                </SidebarContext.Provider>
+            );
+        }
+
+        export const useSidebarContext = () => {
+            const context = useContext(SidebarContext);
+            if (!context) {
+                throw new Error("useSidebarContext must be used within a SidebarContextProvider");
+            }
+            return context;
+        };
+  - type: "header"
+    value: "Define routes for your sidebar"
+  - type: "description"
+    value: "You can customize your own structure by changing the way you map your sidebar. But heres a general layout you can use"
+  - type: "code"
+    filename: "routes/sidebar-routes.ts"
+    lang: "typescript"
+    value: |
+        export const ContentRoutes = {
+            baseUrl:"/components/", // this is the base url for your routes, feel free to disregard
+            routeGroups:[ // here you can define groups
+                {
+                    group: "group1", // name of the group
+                    routes:[
+                        {
+                            name: "route1", // here is the text you want to display to users
+                            route: "route-1" // here is the route
+                        },
+                        {
+                            name: "very long route",
+                            route: "very-long-route" // you can change naming conventions for spaces
+                        },
+                    ]
+                },
+                {
+                    group:"group2",
+                    routes:[
+                        {
+                            name: "route3",
+                            route: "route-3"
+                        }
+                    ]
+                }
+            ]
+        }
+
 
 ---
