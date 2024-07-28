@@ -46,7 +46,6 @@ function SidebarItem({
 }) {
     const { active } = useSidebarContext();
     const isActive = route ? active == route : group ? true : false
-    console.log('SidebarItem:', { route, active, isActive });
     return (
         <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-slate-500", "flex",className)}>
             {children}

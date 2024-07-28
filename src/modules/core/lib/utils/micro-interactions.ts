@@ -4,3 +4,4 @@ export function splitText({text}:{
     const splitted = text.split(" ")
     return splitted
 }
+

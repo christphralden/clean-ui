@@ -1,41 +1,46 @@
 @font-face {
     font-family: 'Restart';
-    src: url('../../public/fonts/Restart_Hard/RestartHard-Light.ttf') format('truetype');
+    src: url('/fonts/Restart_Hard/RestartHard-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal; 
 }
 
 @font-face {
     font-family: 'Restart';
-    src: url('../../public/fonts/Restart_Hard/RestartHard-Regular.ttf') format('truetype');
+    src: url('/fonts/Restart_Hard/RestartHard-Regular.ttf') format('truetype');
     font-weight: 400; 
     font-style: normal; 
 }
 @font-face {
     font-family: 'Restart';
-    src: url('../../public/fonts/Restart_Hard/RestartHard-Medium.ttf') format('truetype');
+    src: url('/fonts/Restart_Hard/RestartHard-Medium.ttf') format('truetype');
     font-weight: 500; 
     font-style: normal; 
 }
 
 @font-face {
     font-family: 'Restart';
-    src: url('../../public/fonts/Restart_Hard/RestartHard-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Restart_Hard/RestartHard-SemiBold.ttf') format('truetype');
     font-weight: 600; 
     font-style: normal; 
 }
 
 @font-face {
     font-family: 'Restart';
-    src: url('../../public/fonts/Restart_Hard/RestartHard-Bold.ttf') format('truetype');
+    src: url('/fonts/Restart_Hard/RestartHard-Bold.ttf') format('truetype');
     font-weight: 700; 
     font-style: normal; 
 }
-
+@font-face {
+    font-family: 'Regrade';
+    src: url('/fonts/Neue_Regrade/NeueRegrade-Variable.ttf') format('truetype');
+    font-weight: 100 900; 
+    font-style: normal; 
+}
 
 @font-face {
     font-family: 'Jha';
-    src: url('../../public/fonts/Jha/jha-times-now.ttf') format('truetype');
+    src: url('/fonts/Jha/jha-times-now.ttf') format('truetype');
     font-weight: 400; 
     font-style: normal; 
 }

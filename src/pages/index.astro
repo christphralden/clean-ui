@@ -14,55 +14,61 @@ const headingLine2 = splitText({
 });
 ---
 
-<Layout >
+<Layout>
 	<main class="flex flex-col gap-16">
-		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col">
+		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col font-regrade font-medium">
 			<div class="flex gap-2 xl:gap-3">
-				{
-					headingLine1.map((word) => {
-						return <h1 class="staggerText hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">{word}</h1>;
-					})
-				}
+				{headingLine1.map((word) => {
+					return (
+						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem] proximity-text">
+							{word.split('').map((char) => (
+								<span class="char" data-animate="font-weight">{char}</span>
+							))}
+						</h1>
+					);
+				})}
 			</div>
 			<div class="flex gap-2 xl:gap-3">
-				{
-					headingLine2.map((word) => {
-						return <h1 class="staggerText hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">{word}</h1>;
-					})
-				}
+				{headingLine2.map((word) => {
+					return (
+						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem] proximity-text">
+							{word.split('').map((char) => (
+								<span class="char" data-animate="font-weight">{char}</span>
+							))}
+						</h1>
+					);
+				})}
 			</div>
 		</section>
 
 		<section class="h-3/4 flex flex-col gap-8">
 			<div class="flex flex-col gap-4 staggerText hidden">
-				<p class="text-3xl xl:text-5xl font-jha ">Table of Contents</p>
+				<p class="text-3xl xl:text-5xl font-jha">Table of Contents</p>
 			</div>
 			<div class="flex flex-col relative staggerText hidden full-width-component">
 				<Separator className='staggerText'/>
-				{
-					ContentRoutes.routeGroups.map((routeGroup) => (
-						routeGroup.routes.map((route)=>(
-							<div class="staggerText">
-								<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
-									<div class="flex content ">
-										<p>{route.name}</p>
-									</div>
-									<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
-										<ArrowUpRight color='white'/>
-									</div>
-								</a>
-								<Separator className='content'/>
-							</div>
-						))	
+				{ContentRoutes.routeGroups.map((routeGroup) =>
+					routeGroup.routes.map((route) => (
+						<div class="staggerText">
+							<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+								<div class="flex content">
+									<p>{route.name}</p>
+								</div>
+								<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+									<ArrowUpRight color='white'/>
+								</div>
+							</a>
+							<Separator className='content'/>
+						</div>
 					))
-				}
+				)}
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <script>
-	import {waveEffect, skewedSlideIn} from '@core/lib/animations';
+	import {waveEffect, skewedSlideIn, variableFontHover} from '@core/lib/animations';
 
 	document.addEventListener('DOMContentLoaded', () => {
 		const staggerTextElements = document.querySelectorAll('.staggerText');
@@ -72,19 +78,26 @@ const headingLine2 = splitText({
 			className: '.staggerText',
 			timing: 0.02,
 			duration: 0.4,
-		})
+		});
 
 		skewedSlideIn({
 			className: '.content',
 			timing: 0.03,
 			duration: 0.4,
-			x:-100,
+			x: -100,
 			skewX: -90,
-		}).delay(0.1)
+		}).delay(0.1);
+	});
+
+	document.addEventListener('DOMContentLoaded', () => {
+		variableFontHover()	
 	});
 </script>
 
-<style>
+<style is:global>
+	.proximity-text {
+		transition: font-weight 0.2s ease;
+	}
 	.hidden {
 		opacity: 0;
 	}
@@ -92,5 +105,8 @@ const headingLine2 = splitText({
 		margin-left: -2rem;
 		margin-right: -2rem;
 		width: calc(100% + 4rem);
+	}
+	.char {
+		display: inline-block;
 	}
 </style>

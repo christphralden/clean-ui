@@ -96,3 +96,4 @@ export function fadeInSlideFromLeft({
         ease: "power2.out",
     });
 }
+

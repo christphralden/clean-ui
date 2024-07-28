@@ -6,6 +6,7 @@ export default {
 			fontFamily: {
 				'restart': ['Restart', 'sans-serif'],
 				'jha': ['Jha', 'serif'],
+				'regrade': ['Regrade', 'sans-serif']
 			},
 			colors: {
 				'primary': '#4169E1',
