@@ -107,6 +107,8 @@ content:
     filename: "animations/variable-hover.tsx"
     lang: "typescript"
     value: |
+      import gsap from 'gsap'
+
       export function variableFontHover({
           select,
           animationDuration = 0.5,
