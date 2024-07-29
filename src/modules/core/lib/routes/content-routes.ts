@@ -2,6 +2,23 @@ export const ContentRoutes = {
     baseUrl:"/components/",
     routeGroups:[
         {
+            group: "getting-started",
+            routes:[
+                {
+                    name:"introduction",
+                    route:"introduction"
+                },
+                {
+                    name: "installation",
+                    route: "installation"
+                },
+                {
+                    name: "setup",
+                    route: "setup"
+                },
+            ]
+        },
+        {
             group: "sidebar",
             routes:[
                 {

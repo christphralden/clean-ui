@@ -12,8 +12,8 @@ content:
     filename: "custom-sidebar.tsx"
     lang: "typescript"
     value: |
-        import { ContentRoutes } from '@core/lib/routes';
-        import { SidebarReact } from '@sidebar/default';
+        import { ContentRoutes } from '@core/lib/routes'; // adjust import
+        import { SidebarReact } from '@sidebar/default'; // adjust import
 
         export const CleanSidebar = ({
             currentPath // you wouldn't need this in React, just use the built in router to get the current path
@@ -59,9 +59,9 @@ content:
     filename: "sidebar.tsx"
     lang: "typescript"
     value: |
-        import { cn } from '@core/lib/utils';
+        import { cn } from '@core/lib/utils'; // adjust import
         import React from 'react';
-        import { SidebarContextProvider, useSidebarContext } from '@sidebar/default';
+        import { SidebarContextProvider, useSidebarContext } from '@sidebar/default'; // adjust import
 
         function SidebarContent({
             children,
@@ -154,7 +154,7 @@ content:
   - type: "header"
     value: "Copy and paste the following code into your project"
   - type: "description"
-    value: "Use this sidebar context to share states or customize the render function to dynamically replace content within the content div for a single-page experience."
+    value: "Use this sidebar context to share states or customize a render function to dynamically replace content within the content div for a single-page experience."
   - type: "code"
     filename: "context/sidebar-context.tsx"
     lang: "typescript"
@@ -200,9 +200,9 @@ content:
 
 
   - type: "header"
-    value: "Define routes for your sidebar"
+    value: "Define and map routes for your sidebar"
   - type: "description"
-    value: "You can customize your own structure by changing the way you map your sidebar. But heres a general layout you can use"
+    value: "You can route with a slug or without, this just helps you map your existing route to the sidebar. Customize your own structure by changing the way you map your sidebar. But heres a general layout you can use"
   - type: "code"
     filename: "routes/sidebar-routes.ts"
     lang: "typescript"
@@ -237,7 +237,12 @@ content:
 
 
   - type: "header"
-    value: "Extra clean tips"
+    value: "Update imports"
+  - type: "description"
+    value: "Change the import paths to match your project"
+
+  - type: "header"
+    value: "Additional tips"
   - type: "description"
     value: "Define index.ts as an entry point for your imports"
   - type: "code"
@@ -249,5 +254,6 @@ content:
         export { SidebarContextProvider, useSidebarContext } from './react/context/sidebar-context' // adjust path
         
 
+  
 
 ---

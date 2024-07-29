@@ -10,7 +10,7 @@ function SidebarContent({
     className?: string;
 }) {
     return (
-        <div className={cn('min-w-fit min-h-fit h-full w-64 lg:w-80 flex flex-col justify-between select-none', className)}>
+        <div className={cn('min-w-fit min-h-fit h-full w-64 xl:w-80 flex flex-col justify-between select-none', className)}>
             {children}
         </div>
     );

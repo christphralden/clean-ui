@@ -5,7 +5,7 @@ export const NavbarRoutes = [
     },
     {
         name:"Components",
-        route:["/components/sidebar/default/"]
+        route:["/components/getting-started/introduction/"]
     },
     // {
     //     name:"Sites",

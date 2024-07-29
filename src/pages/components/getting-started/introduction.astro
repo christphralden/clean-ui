@@ -1,0 +1,44 @@
+---
+import Layout from '@core/layouts/layout.astro'
+import WithSidebar from '@core/layouts/with-sidebar.astro'
+---
+<Layout >
+    <main class="flex flex-col gap-16">
+        <WithSidebar>
+            <section
+                class="flex-1 flex flex-col gap-16 w-3/4"
+                slot="content"
+            >
+                <section class="flex flex-col gap-2 mb-8">
+                    <h1 class="text-3xl font-medium">
+                        Introduction
+                    </h1>
+                    <h3 class="text-3xl font-light">
+                        Curated collection of components with minimalism in mind.
+                    </h3>
+                </section>
+
+                <section id="about" class="flex flex-col w-3/4 gap-8">
+                    <div>
+                        <h3 class="font-medium text-xl mb-2">The purpose of this is for niche, unique, and artistic components that aren't available out of the box.</h3>
+                        <p>I do not claim to own all of the components or design, it's just recreated out of admiration of their work.</p>
+                        <p class="italic">Use this as a reference or framework to build your own components</p>
+                    </div>
+
+                    <p>This is <span class="font-medium">NOT</span> a component library. It's a collection of re-usable components <span class="font-medium">inspired</span> by various designers that you can copy and paste into your projects. Built using tailwind.</p>
+
+
+                    <p class="font-medium">Yes i also use <span class="underline"><a href="https://ui.shadcn.com/">shadcn</a></span>.</p>
+                </section> 
+
+                <section>
+                    <h3 class="font-medium text-xl mb-2">Supported frameworks or libraries</h3>
+                    <p>Anything that works with React probably.&nbsp;<span class="font-medium underline">React</span>, <span class="font-medium underline">Next.js</span>, <span class="font-medium underline">Astro</span> for now.</p>
+                </section>
+            </section>
+            
+        </WithSidebar>
+    </main>
+</Layout>
+
+

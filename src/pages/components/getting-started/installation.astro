@@ -1,0 +1,45 @@
+---
+import Layout from '@core/layouts/layout.astro'
+import WithSidebar from '@core/layouts/with-sidebar.astro'
+---
+<Layout >
+    <main class="flex flex-col gap-16">
+        <WithSidebar>
+            <section
+                class="flex-1 flex flex-col gap-16 w-3/4"
+                slot="content"
+            >
+                <section class="flex flex-col gap-2 mb-8">
+                    <h1 class="text-3xl font-medium">
+                        Installation
+                    </h1>
+                    <h3 class="text-3xl font-light">
+                        How to install libraries that are used.
+                    </h3>
+                </section>
+
+                <section id="about" class="flex flex-col w-full gap-8">
+                    
+
+                    <!-- <div class="flex flex-col gap-8">
+                        <div>
+                            <h3 class="font-medium text-xl mb-2">Frameworks</h3>
+                            <p class="">Just refer to their documentation</p>
+                        </div>                        
+                        <div class="flex flex-col text-xl">
+                            <p>React (Library)</p>
+                            <p>Next.js</p>
+                            <p>Astro</p>
+                        </div>
+                    </div> -->
+
+                </section> 
+
+                
+            </section>
+            
+        </WithSidebar>
+    </main>
+</Layout>
+
+
