@@ -25,6 +25,7 @@ const sidebarCollection = defineCollection({
 		description: z.string(),
 		lang: z.string(),
 		creator: z.string(),
+		component: z.string().optional(),
 		content: z.array(contentBlockSchema),
 	}),
 });

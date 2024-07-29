@@ -71,7 +71,7 @@ const SidebarComponent = ({
     );
 };
 
-export const SidebarReact = Object.assign(SidebarComponent, {
+export const Sidebar = Object.assign(SidebarComponent, {
     Items: SidebarItems,
     Item: SidebarItem
 });

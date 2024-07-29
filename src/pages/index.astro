@@ -2,7 +2,7 @@
 import Layout from '@core/layouts/layout.astro';
 import Separator from '@core/components/ui/separator.astro';
 import {ContentRoutes} from '@core/lib/routes';
-import {splitText, padNumber} from '@core/lib/utils';
+import {splitText, padNumber, splitTextToLetters} from '@core/lib/utils';
 import {ArrowUpRight} from '@geist-ui/icons';
 import {heading} from "@core/content/index/header.json"
 
@@ -20,8 +20,8 @@ const headingLine2 = splitText({
 			<div class="flex gap-2 xl:gap-3">
 				{headingLine1.map((word) => {
 					return (
-						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem] proximity-text">
-							{word.split('').map((char) => (
+						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">
+							{splitTextToLetters({text:word}).map((char) => (
 								<span class="char" data-animate="font-weight">{char}</span>
 							))}
 						</h1>
@@ -31,8 +31,8 @@ const headingLine2 = splitText({
 			<div class="flex gap-2 xl:gap-3">
 				{headingLine2.map((word) => {
 					return (
-						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem] proximity-text">
-							{word.split('').map((char) => (
+						<h1 class="staggerText uppercase hidden text-3xl xl:text-5xl xl:leading-[3.5rem]">
+							{splitTextToLetters({text:word}).map((char) => (
 								<span class="char" data-animate="font-weight">{char}</span>
 							))}
 						</h1>
@@ -49,7 +49,7 @@ const headingLine2 = splitText({
 				<Separator className='staggerText'/>
 				{ContentRoutes.routeGroups.map((routeGroup) =>
 					<div class="staggerText">
-						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].name}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
 							<div class="flex content">
 								<p>{routeGroup.group}</p>
 								<p>—{padNumber(routeGroup.routes.length)}</p>
@@ -87,7 +87,13 @@ const headingLine2 = splitText({
 			skewX: -90,
 		}).delay(0.1);
 
-		variableFontHover()	
+		variableFontHover({
+			select:'[data-animate="font-weight"]',
+			animationDuration: 0.5,
+			maxDistance:300,
+			minFontWeight:500,
+			maxFontWeight:900
+		})	 
 	});
 
 	

@@ -9,6 +9,9 @@
       "@sidebar/*": [
         "modules/sidebar/*"
       ],
+      "@micro-interactions/*": [
+        "modules/micro-interactions/*"
+      ],
       "@content/*": [
         "content/*"
       ]

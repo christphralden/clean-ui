@@ -5,56 +5,52 @@ lang: "react-ts"
 creator: "christphralden"
 content: 
   - type: "header"
-    value: "Implementation - Astro"
+    value: "Implementation - Astro."
   - type: "description"
-    value: "How to use this component in Astro"
+    value: "How to use this component in Astro."
   - type: "code"
     filename: "custom-sidebar.tsx"
     lang: "typescript"
     value: |
         import { ContentRoutes } from '@core/lib/routes'; // adjust import
-        import { SidebarReact } from '@sidebar/default'; // adjust import
+        import { Sidebar } from '@sidebar/default'; // adjust import
 
         export const CleanSidebar = ({
-            currentPath // you wouldn't need this in React, just use the built in router to get the current path
+            currentPath
         }: {
             currentPath: string
         }) => {
             return (
-                <SidebarReact currentPath={currentPath} >
-                    <SidebarReact.Items className='gap-6'> // Items are container for Item
+                <Sidebar currentPath={currentPath} >
+                    <Sidebar.Items className='gap-6'>
                         {ContentRoutes.routeGroups.map((routeGroup) => (
-                            <SidebarReact.Items key={routeGroup.group}>
-
-                                // Mark a group by adding group parameter
-                                <SidebarReact.Item group className='uppercase font-normal mb-2'> 
+                            <Sidebar.Items key={routeGroup.group}>
+                                <Sidebar.Item group className='uppercase font-normal mb-2'>
                                     <h3>{routeGroup.group}</h3>
-                                </SidebarReact.Item>
+                                </Sidebar.Item>
 
-                                <SidebarReact.Items className='gap-1'>
-                                    {routeGroup.routes.map((route) => (  // Map the routes inside the group
-                                        <SidebarReact.Item // Use Item as a wrapper for your child 
+                                <Sidebar.Items className='gap-1'>
+                                    {routeGroup.routes.map((route) => (
+                                        <Sidebar.Item 
                                             key={route.route} 
                                             route={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} 
                                             className="capitalize"
                                         >
                                             {route.name}
-                                        </SidebarReact.Item>
+                                        </Sidebar.Item>
                                     ))}
-                                </SidebarReact.Items>
-                            </SidebarReact.Items>
-
+                                </Sidebar.Items>
+                            </Sidebar.Items>
                         ))}
-                    </SidebarReact.Items> 
-                </SidebarReact>
+                    </Sidebar.Items> 
+                </Sidebar>
             );
-        }
-
+        };
 
   - type: "header"
-    value: "Copy and paste the following code into your project"
+    value: "Copy and paste the following code into your project."
   - type: "description"
-    value: "Component for the sidebar"
+    value: "Component for the sidebar."
   - type: "code"
     filename: "sidebar.tsx"
     lang: "typescript"
@@ -131,7 +127,7 @@ content:
             );
         };
 
-        export const SidebarReact = Object.assign(SidebarComponent, {
+        export const Sidebar = Object.assign(SidebarComponent, {
             Items: SidebarItems,
             Item: SidebarItem
         });
@@ -152,7 +148,7 @@ content:
 
 
   - type: "header"
-    value: "Copy and paste the following code into your project"
+    value: "Copy and paste the following code into your project."
   - type: "description"
     value: "Use this sidebar context to share states or customize a render function to dynamically replace content within the content div for a single-page experience."
   - type: "code"
@@ -200,9 +196,9 @@ content:
 
 
   - type: "header"
-    value: "Define and map routes for your sidebar"
+    value: "Define and map routes for your sidebar."
   - type: "description"
-    value: "You can route with a slug or without, this just helps you map your existing route to the sidebar. Customize your own structure by changing the way you map your sidebar. But heres a general layout you can use"
+    value: "You can route with a slug or without, this just helps you map your existing route to the sidebar. Customize your own structure by changing the way you map your sidebar. But heres a general layout you can use."
   - type: "code"
     filename: "routes/sidebar-routes.ts"
     lang: "typescript"
@@ -237,20 +233,20 @@ content:
 
 
   - type: "header"
-    value: "Update imports"
+    value: "Update imports."
   - type: "description"
-    value: "Change the import paths to match your project"
+    value: "Change the import paths to match your project."
 
   - type: "header"
-    value: "Additional tips"
+    value: "Additional tips."
   - type: "description"
-    value: "Define index.ts as an entry point for your imports"
+    value: "Define index.ts as an entry point for your imports."
   - type: "code"
     filename: "index.ts"
     lang: "typescript"
     value: |
-        export { SidebarReact } from './react/sidebar-react' // adjust path
-        export type { RouteName, RouteGroup, RouteMap } from './react/sidebar-react' // adjust path
+        export { Sidebar } from './react/sidebar' // adjust path
+        export type { RouteName, RouteGroup, RouteMap } from './react/sidebar' // adjust path
         export { SidebarContextProvider, useSidebarContext } from './react/context/sidebar-context' // adjust path
         
 

@@ -1,61 +1,66 @@
 ---
-import type { CollectionTypes } from '@content/content.types'
-import { getEntry } from 'astro:content'
-import Snippet from '../snippet/snippet.astro'
-import { cn } from '@core/lib/utils'
-import Fallback from './fallback.astro'
+import React from 'react';
+import {DynamicRenderer} from '@core/components/ui/dynamic-renderer';
+import type {CollectionTypes} from '@content/content.types';
+import {getEntry} from 'astro:content';
+import Snippet from '../snippet/snippet.astro';
+import {cn} from '@core/lib/utils';
+import Fallback from './fallback.astro';
 
 type Props = {
-    className?: string
-    collection: CollectionTypes
-    slug: string
-    lang?: string
-}
+	className?: string;
+	collection: CollectionTypes;
+	slug: string;
+	lang?: string;
+};
 
-const {
-    className,
-    collection, 
-    slug,
-    lang="typescript", 
-} = Astro.props
+const {className, collection, slug, lang = 'typescript'} = Astro.props;
 
 const page = await getEntry(collection, slug);
-
 ---
-<div class={cn("w-full h-fit", className)}>
-    
-    <section class="flex flex-col gap-8">
-    { page ?
-        <>
-            <div class="flex flex-col gap-2">
-                <h1 class="text-3xl font-medium">{page.data.title}</h1>
-                <h3 class="text-3xl font-light">{page.data.description}</h3>
-            </div> 
-            <div class="flex flex-col gap-2">
-                {page.data.content.map(block => {
-                switch (block.type) {
-                    case 'header':
-                        return <h1 class="text-xl font-medium mt-8">{block.value}</h1>;
-                    case 'description':
-                        return <p class="text-base w-3/4 text-gray-600">{block.value}</p>;
-                    case 'code':
-                        return <Snippet filename={block.filename} lang={block.lang} code={block.value} className='my-4' />
-                    default:
-                        return null;
-                }}
-            )}
-            </div>
 
-            <div>
-                <h3 class="text-xl">Brought to you by @{page.data.creator}</h3>
-            </div>
-        </>     
-        :
-        <>
-            <Fallback/>
-        </>
-    }
-    </section>
-
-    
+<div class={cn('w-full h-fit', className)}>
+	<section class="flex flex-col gap-8">
+		{
+			page ? (
+				<>
+					<div class="flex flex-col gap-2">
+						<h1 class="text-3xl font-medium">{page.data.title}</h1>
+						<h3 class="text-3xl font-light">{page.data.description}</h3>
+					</div>
+                        {page.data.component && (
+                            <div class="w-full h-80 justify-center items-center flex">
+                                <DynamicRenderer componentName={page.data.component} client:idle />
+                            </div>
+                        )}
+					<div class="flex flex-col gap-2">
+						{page.data.content.map((block) => {
+							switch (block.type) {
+								case 'header':
+									return <h1 class="text-xl font-medium mt-8">{block.value}</h1>;
+								case 'description':
+									return <p class="text-base w-3/4 text-gray-600">{block.value}</p>;
+								case 'code':
+									return (
+										<Snippet
+											filename={block.filename}
+											lang={block.lang}
+											code={block.value}
+											className="my-4"
+										/>
+									);
+								default:
+									return null;
+							}
+						})}
+					</div>
+					<div>
+						<h3 class="text-xl">Brought to you by @{page.data.creator}</h3>
+					</div>
+				</>
+			) : (
+				<Fallback />
+			)
+		}
+	</section>
 </div>

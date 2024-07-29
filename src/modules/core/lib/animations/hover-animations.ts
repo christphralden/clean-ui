@@ -1,14 +1,23 @@
 import gsap from 'gsap'
 
-export function variableFontHover(){
+export function variableFontHover({
+    select,
+    animationDuration = 0.5,
+    maxDistance = 300,
+    minFontWeight = 500,
+    maxFontWeight = 900
+}:{
+    select:string,
+    animationDuration?: number,
+    maxDistance?: number,
+    minFontWeight?: number,
+    maxFontWeight?: number,
+}){
     let mm = gsap.matchMedia();
 		
     mm.add("(min-width:992px)", () => {
-        const fontWeightItems = document.querySelectorAll('[data-animate="font-weight"]');
-        const MAX_DISTANCE = 300;
-        const MAX_FONT_WEIGHT = 900;
-        const MIN_FONT_WEIGHT = 500;
-
+        const fontWeightItems = document.querySelectorAll(select);
+        
         fontWeightItems.forEach(item => {
             const text = item.textContent;
             item.textContent = '';
@@ -36,15 +45,15 @@ export function variableFontHover(){
                     );
 
                     let fontWeight = 
-                        distance < MAX_DISTANCE ? gsap.utils.mapRange(
+                        distance < maxDistance ? gsap.utils.mapRange(
                             0, 
-                            MAX_DISTANCE,
-                            MIN_FONT_WEIGHT,
-                            MAX_FONT_WEIGHT,
-                            Math.max(0, MAX_DISTANCE - distance)
-                        ) : MIN_FONT_WEIGHT;
+                            maxDistance,
+                            minFontWeight,
+                            maxFontWeight,
+                            Math.max(0, maxDistance - distance)
+                        ) : minFontWeight;
 
-                    gsap.to(char, {fontWeight, duration: 0.5});
+                    gsap.to(char, {fontWeight, duration: animationDuration});
                 });
             });
         });

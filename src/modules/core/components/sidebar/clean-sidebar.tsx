@@ -1,5 +1,5 @@
 import { ContentRoutes } from '@core/lib/routes';
-import { SidebarReact } from '@sidebar/default';
+import { Sidebar } from '@sidebar/default';
 
 export const CleanSidebar = ({
     currentPath
@@ -7,28 +7,28 @@ export const CleanSidebar = ({
     currentPath: string
 }) => {
     return (
-        <SidebarReact currentPath={currentPath} >
-            <SidebarReact.Items className='gap-6'>
+        <Sidebar currentPath={currentPath} >
+            <Sidebar.Items className='gap-6'>
                 {ContentRoutes.routeGroups.map((routeGroup) => (
-                    <SidebarReact.Items key={routeGroup.group}>
-                        <SidebarReact.Item group className='uppercase font-normal mb-2'>
+                    <Sidebar.Items key={routeGroup.group}>
+                        <Sidebar.Item group className='uppercase font-normal mb-2'>
                             <h3>{routeGroup.group}</h3>
-                        </SidebarReact.Item>
+                        </Sidebar.Item>
 
-                        <SidebarReact.Items className='gap-1'>
+                        <Sidebar.Items className='gap-1'>
                             {routeGroup.routes.map((route) => (
-                                <SidebarReact.Item 
+                                <Sidebar.Item 
                                     key={route.route} 
                                     route={`${ContentRoutes.baseUrl}${routeGroup.group}/${route.route}/`} 
                                     className="capitalize"
                                 >
                                     {route.name}
-                                </SidebarReact.Item>
+                                </Sidebar.Item>
                             ))}
-                        </SidebarReact.Items>
-                    </SidebarReact.Items>
+                        </Sidebar.Items>
+                    </Sidebar.Items>
                 ))}
-            </SidebarReact.Items> 
-        </SidebarReact>
+            </Sidebar.Items> 
+        </Sidebar>
     );
 };

@@ -1,3 +1,3 @@
-export { SidebarReact } from './react/sidebar-react'
-export type {RouteName, RouteGroup, RouteMap} from './react/sidebar-react'
+export { Sidebar } from './react/sidebar'
+export type {RouteName, RouteGroup, RouteMap} from './react/sidebar'
 export {SidebarContextProvider, useSidebarContext} from './react/context/sidebar-context'
