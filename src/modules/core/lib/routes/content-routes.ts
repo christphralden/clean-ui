@@ -22,8 +22,8 @@ export const ContentRoutes = {
             group: "sidebar",
             routes:[
                 {
-                    name: "default",
-                    route: "default"
+                    name: "default sidebar",
+                    route: "default-sidebar"
                 },
                 // {
                 //     name: "snellberg",
