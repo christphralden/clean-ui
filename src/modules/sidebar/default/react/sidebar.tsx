@@ -10,7 +10,7 @@ function SidebarContent({
     className?: string;
 }) {
     return (
-        <div className={cn('min-w-fit min-h-fit h-full w-64 xl:w-80 flex flex-col justify-between select-none', className)}>
+        <div className={cn('min-w-fit min-h-fit h-full w-52 xl:w-80 flex flex-col justify-between select-none', className)}>
             {children}
         </div>
     );
@@ -24,7 +24,7 @@ function SidebarItems({
     className?: string;
 }) {
     return (
-        <div className={cn("flex flex-col", className)}>
+        <div className={cn("flex flex-col cursor-pointer", className)}>
             {children}
         </div>
     );
@@ -46,7 +46,7 @@ function SidebarItem({
     const { active } = useSidebarContext();
     const isActive = route ? active == route : group ? true : false
     return (
-        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex" ,className)}>
+        <a {...other} href={route} className={cn(isActive ? "font-normal text-black" : "font-thin text-gray-600", "flex cursor-pointer" ,className)}>
             {children}
         </a>
     );

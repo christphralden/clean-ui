@@ -1,51 +1,13 @@
 ---
 title: "Variable Hover"
-description: "A cool text hover effect leveraging variable fonts."
+description: "A cool text proximity hover effect leveraging variable fonts."
 lang: "react-ts"
 component: "variable-hover"
 creator: "christphralden"
 
-content: 
+content:
   - type: "header"
-    value: "Install a variable font."
-  - type: "description"
-    value: 'To be able to achieve this effect, you MUST use a variable font. For this example im using Neue Regrade.'
-  - type: "code"
-    filename: "typography.css"
-    lang: "css"
-    value: |
-      @font-face {
-        font-family: 'Regrade';
-        src: url('/fonts/Neue_Regrade/NeueRegrade-Variable.ttf') format('truetype');
-        font-weight: 100 900; 
-        font-style: normal; 
-      }
-
-
-  - type: "header"
-    value: "Update tailwind.config.mjs."
-  - type: "description"
-    value: 'Update tailwind config to use the font as a class. I used "font-regrade", you can see that being applied below.'
-  - type: "code"
-    filename: "tailwind.config.mjs"
-    lang: "javascript"
-    value: |
-      /** @type {import('tailwindcss').Config} */
-      export default {
-        content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-        theme: {
-          extend: {
-            fontFamily: {
-              'regrade': ['Regrade', 'sans-serif']
-            },
-          },
-        },
-        plugins: [],
-      }
-
-
-  - type: "header"
-    value: "Copy and paste the following code into your project."
+    value: "Implementation - React."
   - type: "description"
     value: "Component for the variable hover."
   - type: "code"
@@ -64,7 +26,7 @@ content:
 
         useEffect(() => {
           variableFontHover({
-            select:'[data-animate="font-weight"]',
+            select:'[data-animate="font-weight"]', // adjust this if your html is different
             animationDuration: 0.5,
             maxDistance:300,
             minFontWeight:400,
@@ -89,9 +51,66 @@ content:
 
 
   - type: "header"
-    value: "Install gsap into your project."
+    value: "Implementation - Astro."
   - type: "description"
-    value: "Run this command in the terminal with your package manager of choice, npm will be used as an example."
+    value: "Keep the html the same as above"
+  - type: "code"
+    filename: "variable-hover.tsx"
+    lang: "typescript"
+    value: |
+      document.addEventListener('DOMContentLoaded', () => {
+        variableFontHover({
+          select:'[data-animate="font-weight"]', // adjust this if your html is different
+          animationDuration: 0.5,
+          maxDistance:300,
+          minFontWeight:500,
+          maxFontWeight:900
+        })	 
+      });
+
+
+  - type: "header"
+    value: "Use a variable font."
+  - type: "description"
+    value: 'To be able to achieve this effect, you MUST use a variable font. For this example im using Neue Regrade.<br/>You can look it up if you dont have one, its free.'
+  - type: "code"
+    filename: "typography.css"
+    lang: "css"
+    value: |
+      @font-face {
+        font-family: 'Regrade';
+        src: url('/fonts/Neue_Regrade/NeueRegrade-Variable.ttf') format('truetype');
+        font-weight: 100 900; 
+        font-style: normal; 
+      }
+
+
+  - type: "header"
+    value: "Update tailwind.config.mjs."
+  - type: "description"
+    value: 'Update tailwind config to use the font as a class. I used "font-regrade", you can see that being applied below.<br/>Please update in accordance to your font of choice.'
+  - type: "code"
+    filename: "tailwind.config.mjs"
+    lang: "javascript"
+    value: |
+      /** @type {import('tailwindcss').Config} */
+      export default {
+        content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+        theme: {
+          extend: {
+            fontFamily: {
+              'regrade': ['Regrade', 'sans-serif']
+            },
+          },
+        },
+        plugins: [],
+      }
+
+
+  - type: "header"
+    value: "Install GSAP into your project."
+  - type: "description"
+    value: "GSAP is a lightweight animation library that will help animating things easier.<br/>Run this command in the terminal with your package manager of choice to install GSAP, npm will be used as an example."
   - type: "code"
     filename: "install gsap"
     lang: "text"
@@ -102,9 +121,9 @@ content:
   - type: "header"
     value: "Copy and paste the following code into your project."
   - type: "description"
-    value: "Function that applies the animation using gsap."
+    value: "Function that applies the animation using GSAP or you could customize this with vanillajs."
   - type: "code"
-    filename: "animations/variable-hover.tsx"
+    filename: "animations/variable-hover.ts"
     lang: "typescript"
     value: |
       import gsap from 'gsap'
@@ -175,7 +194,7 @@ content:
   - type: "description"
     value: "Some string utilities to help you."
   - type: "code"
-    filename: "utils/string.tsx"
+    filename: "utils/string.ts"
     lang: "typescript"
     value: |
       export function splitTextToLetters({
@@ -187,10 +206,13 @@ content:
       }
 
 
+
+
   - type: "header"
     value: "Update imports."
   - type: "description"
     value: "Change the import paths to match your project."
+
 
 
 ---

@@ -25,21 +25,21 @@ export const ContentRoutes = {
                     name: "default",
                     route: "default"
                 },
-                {
-                    name: "snellberg",
-                    route: "snellberg"
-                },
+                // {
+                //     name: "snellberg",
+                //     route: "snellberg"
+                // },
             ]
         },
-        {
-            group: "navbar",
-            routes:[
-                {
-                    name: "default",
-                    route: "default"
-                },
-            ]
-        },
+        // {
+        //     group: "navbar",
+        //     routes:[
+        //         {
+        //             name: "default",
+        //             route: "default"
+        //         },
+        //     ]
+        // },
         {
             group:"micro-interactions",
             routes:[
@@ -49,32 +49,32 @@ export const ContentRoutes = {
                 }
             ]
         },
-        {
-            group:"form",
-            routes:[
-                {
-                    name: "Authentication",
-                    route: "authentication"
-                },
-                {
-                    name: "Single Input",
-                    route: "single-input"
-                },
-                {
-                    name: "Text Area",
-                    route: "text-area"
-                }
-            ]
-        },
-        {
-            group:"layout",
-            routes:[
-                {
-                    name: "hero section",
-                    route: "hero-section"
-                }
-            ]
-        }
+        // {
+        //     group:"form",
+        //     routes:[
+        //         {
+        //             name: "Authentication",
+        //             route: "authentication"
+        //         },
+        //         {
+        //             name: "Single Input",
+        //             route: "single-input"
+        //         },
+        //         {
+        //             name: "Text Area",
+        //             route: "text-area"
+        //         }
+        //     ]
+        // },
+        // {
+        //     group:"layout",
+        //     routes:[
+        //         {
+        //             name: "hero section",
+        //             route: "hero-section"
+        //         }
+        //     ]
+        // }
     ]
     
 }

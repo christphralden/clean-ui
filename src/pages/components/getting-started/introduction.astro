@@ -1,4 +1,5 @@
 ---
+import Separator from '@core/components/ui/separator.astro'
 import Layout from '@core/layouts/layout.astro'
 import WithSidebar from '@core/layouts/with-sidebar.astro'
 ---
@@ -18,21 +19,29 @@ import WithSidebar from '@core/layouts/with-sidebar.astro'
                     </h3>
                 </section>
 
-                <section id="about" class="flex flex-col w-3/4 gap-8">
+                <section id="about" class="flex flex-col gap-8">
                     <div>
-                        <h3 class="font-medium text-xl mb-2">The purpose of this is for niche, unique, and artistic components that aren't available out of the box.</h3>
-                        <p>I do not claim to own all of the components or design, it's just recreated out of admiration of their work.</p>
-                        <p class="italic">Use this as a reference or framework to build your own components</p>
+                        <h3 class="font-medium text-xl mb-2">This collection provides unique and specialized components that are not typically available out of the box.</h3>
+                        <p>We do not claim to own all of the components or design, it's just recreated out of admiration of their work.</p>
                     </div>
 
                     <p>This is <span class="font-medium">NOT</span> a component library. It's a collection of re-usable components <span class="font-medium">inspired</span> by various designers that you can copy and paste into your projects. Built using tailwind.</p>
 
+                    <Separator/>
+                    <div>
+                        <p class="font-medium text-xl mb-2">Yes, we also use <span class="underline"><a href="https://ui.shadcn.com/">shadcn</a></span>.</p>
+                        <p>We are aware of the many UI and component libraries out there.</p>
+                        <p>Our goal isn't to increase dependencies but, creating modular yet beautiful components as if you built it your own.</p>
+                    </div>
 
-                    <p class="font-medium">Yes i also use <span class="underline"><a href="https://ui.shadcn.com/">shadcn</a></span>.</p>
+                    <p class="font-medium">We refrain from using external dependencies unless needed, so you can fully customize all the components as you wish.</p>
+
+                    <p class="italic">Use this as a reference or framework to build your own components</p>
                 </section> 
-
+                <Separator/>
                 <section>
                     <h3 class="font-medium text-xl mb-2">Supported frameworks or libraries</h3>
+                    <p>Yes, everything is built with tailwind</p>
                     <p>Anything that works with React probably.&nbsp;<span class="font-medium underline">React</span>, <span class="font-medium underline">Next.js</span>, <span class="font-medium underline">Astro</span> for now.</p>
                 </section>
             </section>

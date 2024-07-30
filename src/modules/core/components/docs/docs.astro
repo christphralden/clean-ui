@@ -1,5 +1,4 @@
 ---
-import React from 'react';
 import {DynamicRenderer} from '@core/components/ui/dynamic-renderer';
 import type {CollectionTypes} from '@content/content.types';
 import {getEntry} from 'astro:content';
@@ -37,9 +36,9 @@ const page = await getEntry(collection, slug);
 						{page.data.content.map((block) => {
 							switch (block.type) {
 								case 'header':
-									return <h1 class="text-xl font-medium mt-8">{block.value}</h1>;
+									return <h1 class="text-xl font-medium mt-8" set:html={block.value}/>;
 								case 'description':
-									return <p class="text-base w-3/4 text-gray-600">{block.value}</p>;
+									return <p class="text-base w-3/4 text-gray-600" set:html={block.value}/>;
 								case 'code':
 									return (
 										<Snippet
