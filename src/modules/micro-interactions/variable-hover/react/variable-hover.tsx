@@ -20,7 +20,7 @@ export const VariableHover = ({
   
   const letters = splitTextToLetters({
     text
-  })
+})
 
 	return (
     <div>

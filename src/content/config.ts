@@ -1,6 +1,12 @@
 import {defineCollection} from 'astro:content';
 import z from 'zod';
 
+const codeSchema = z.object({
+	filename: z.string(),
+	lang: z.string(),
+	value: z.string(),
+});
+
 const contentBlockSchema = z.union([
 	z.object({
 		type: z.literal('header'),
@@ -13,25 +19,38 @@ const contentBlockSchema = z.union([
 	z.object({
 		type: z.literal('code'),
 		filename: z.string(),
-		lang:z.string(),
+		lang: z.string(),
 		value: z.string(),
 	}),
 ]);
 
-const sidebarCollection = defineCollection({
-	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		lang: z.string(),
-		creator: z.string(),
-		component: z.string().optional(),
-		content: z.array(contentBlockSchema),
-	}),
+const variantSchema = z.object({
+	component: z.string(),
+	header: z.string(),
+	code: codeSchema,
 });
 
-export const collections = {
-	sidebar: sidebarCollection,
-};
+const versionSchema = z.object({
+	framework: z.string(),
+	lang: z.string(),
+	component: z.string().optional(),
+	variants: z.array(variantSchema).optional(),
+	content: z.array(contentBlockSchema),
+});
 
+export const docsSchema = z.object({
+	title: z.string(),
+	description: z.string(),
+	creator: z.string(),
+	versions: z.array(versionSchema),
+});
+
+const docsCollection = defineCollection({
+	schema: docsSchema,
+	});
+	
+	export const collections = {
+	sidebar: docsCollection,
+	};
+	
 export const COLLECTIONS = ['sidebar'] as const;
