@@ -7,7 +7,7 @@ import WithSidebar from '@core/layouts/with-sidebar.astro'
     <main class="flex flex-col gap-16">
         <WithSidebar>
             <section
-                class="flex-1 flex flex-col gap-16 w-3/4"
+                class="flex-1 flex flex-col gap-16 w-full xl:w-3/4"
                 slot="content"
             >
                 <section class="flex flex-col gap-2 mb-8">
@@ -22,28 +22,39 @@ import WithSidebar from '@core/layouts/with-sidebar.astro'
                 <section id="about" class="flex flex-col gap-8">
                     <div>
                         <h3 class="font-medium text-xl mb-2">This collection provides unique and specialized components that are not typically available out of the box.</h3>
-                        <p>We do not claim to own all of the components or design, it's just recreated out of admiration of their work.</p>
+                        <p class="text-gray-600">We do not claim to own all of the components or design, it's just recreated out of admiration of their work.</p>
                     </div>
 
-                    <p>This is <span class="font-medium">NOT</span> a component library. It's a collection of re-usable components <span class="font-medium">inspired</span> by various designers that you can copy and paste into your projects. Built using tailwind.</p>
+                    <p class="text-gray-600">This is <span class="font-medium">NOT</span> a component library. It's a collection of re-usable components <span class="font-medium">inspired</span> by various designers that you can copy and paste into your projects.</p>
+                    <p class="text-gray-600">Built using <span class="font-medium underline">Tailwind CSS</span>.</p>
+
+                    <Separator/>
+
+                    <section>
+                        <h3 class="font-medium text-xl mb-2">Fuck mediocre design.</h3>
+                        <p class="text-gray-600">Good design is invisible to the eye, but bad design sticks out like a sore thumb.</p>
+                        <p class="text-gray-600">The components in this collection are mostly experimental and tailored for visually-rich websites rather than web apps. Please choose them accordingly to ensure they complement your project's aesthetic.</p>
+                    </section>
 
                     <Separator/>
                     <div>
-                        <p class="font-medium text-xl mb-2">Yes, we also use <span class="underline"><a href="https://ui.shadcn.com/">shadcn</a></span>.</p>
-                        <p>We are aware of the many UI and component libraries out there.</p>
-                        <p>Our goal isn't to increase dependencies but, creating modular yet beautiful components as if you built it your own.</p>
+                        <p class="font-medium text-xl mb-2">Yes, I also use <span class="underline"><a href="https://ui.shadcn.com/">shadcn</a></span>.</p>
+                        <p class="text-gray-600">I am aware of the many UI and component libraries out there.</p>
+                        <p class="text-gray-600">My goal isn't to increase dependencies but, creating modular yet beautiful components as if you built it your own.</p>
+                        <p class="text-gray-600">Currently focused on delivering high-quality components, with plans to make most components extendable with <span class="font-medium underline">ShadCN</span> in the near future.</p>
                     </div>
 
-                    <p class="font-medium">We refrain from using external dependencies unless needed, so you can fully customize all the components as you wish.</p>
+                    <p class="font-medium text-gray-600">External dependencies are minimized to allow full customization of all components.</p>
 
-                    <p class="italic">Use this as a reference or framework to build your own components</p>
+                    <p class="italic text-gray-600">Use this as a reference or framework to build your own components</p>
+
+                    <Separator/>
+                    <section>
+                        <h3 class="font-medium text-xl mb-2">Supported frameworks or libraries</h3>
+                        <p class="text-gray-600">Anything that works with React probably.&nbsp;<span class="font-medium underline">React</span>, <span class="font-medium underline">Next.js</span>, <span class="font-medium underline">Astro</span> for now.</p>
+                    </section>
                 </section> 
-                <Separator/>
-                <section>
-                    <h3 class="font-medium text-xl mb-2">Supported frameworks or libraries</h3>
-                    <p>Yes, everything is built with tailwind</p>
-                    <p>Anything that works with React probably.&nbsp;<span class="font-medium underline">React</span>, <span class="font-medium underline">Next.js</span>, <span class="font-medium underline">Astro</span> for now.</p>
-                </section>
+                
             </section>
             
         </WithSidebar>
