@@ -1,0 +1,62 @@
+---
+import { cn } from '@core/lib/utils';
+
+type Props = {
+  className?: string;
+};
+
+const { className } = Astro.props;
+
+const TextContent = [
+  {
+    text: "You are just as likely to solve a problem by being unconventional and determined as by being brilliant.",
+    direction: "20%",
+  },
+  {
+    text: "You are just as likely to solve a problem by being unconventional and determined as by being brilliant.",
+    direction: "-20%",
+  },
+  {
+    text: "You are just as likely to solve a problem by being unconventional and determined as by being brilliant.",
+    direction: "25%",
+  },
+];
+---
+
+<div
+  id="trigger"
+  class={cn(
+    "text-nowrap h-[75vh] w-full overflow-clip flex justify-center items-center flex-col",
+    className
+  )}
+>
+  {TextContent.map((content) => (
+    <p
+      data-direction={content.direction}
+      class="text-parallax text-5xl"
+    >
+      {content.text}
+    </p>
+  ))}
+</div>
+
+<script>
+  import { textParallaxScroll } from '@core/lib/animations';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const selected = document.querySelectorAll('.text-parallax');
+    const trigger = document.getElementById('trigger');
+
+    if (selected && trigger) {
+      selected.forEach((select) => {
+        if (!(select instanceof HTMLElement)) return;
+        const direction = select.dataset.direction;
+        textParallaxScroll({
+          select: select,
+          direction: direction,
+          trigger: trigger,
+        });
+      });
+    }
+  });
+</script>

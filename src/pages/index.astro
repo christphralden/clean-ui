@@ -15,7 +15,7 @@ const headingLine2 = splitText({
 ---
 
 <Layout>
-	<main class="flex flex-col gap-16">
+	<main class="flex w-full flex-col gap-16">
 		<section class="h-72 w-fit xl:gap-2 gap-1 justify-center items-start flex flex-col font-regrade font-medium tracking-wide select-none">
 			<div class="flex gap-2 xl:gap-3">
 				{headingLine1.map((word) => {
@@ -49,12 +49,12 @@ const headingLine2 = splitText({
 				<Separator className='staggerText'/>
 				{ContentRoutes.routeGroups.map((routeGroup) =>
 					<div class="staggerText">
-						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].route}/`} class="group p-4 px-8 flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
-							<div class="flex content">
+						<a href={`${ContentRoutes.baseUrl}${routeGroup.group}/${routeGroup.routes[0].route}/`} class="group p-4 px-[5vw] flex uppercase text-xl justify-between hover:bg-black hover:text-white transition-all ease-out duration-100">
+							<div class=" flex content">
 								<p>{routeGroup.group}</p>
 								<p>—{padNumber(routeGroup.routes.length)}</p>
 							</div>
-							<div class="opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
+							<div class=" opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-100">
 								<ArrowUpRight color='white'/>
 							</div>
 						</a>
@@ -107,9 +107,9 @@ const headingLine2 = splitText({
 		opacity: 0;
 	}
 	.full-width-component {
-		margin-left: -2rem;
-		margin-right: -2rem;
-		width: calc(100% + 4rem);
+		margin-left: -5vw;
+		margin-right: -5vw;
+		width: calc(100% + 10vw);
 	}
 	.char {
 		display: inline-block;

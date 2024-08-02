@@ -49,6 +49,15 @@ export const ContentRoutes = {
                 }
             ]
         },
+        {
+            group:"scroll-interactions",
+            routes:[
+                {
+                    name:"text parallax",
+                    route:"text-parallax"
+                }
+            ]
+        }
         // {
         //     group:"form",
         //     routes:[

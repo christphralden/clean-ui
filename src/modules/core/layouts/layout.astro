@@ -33,11 +33,13 @@ const {title = "CLEAN-UI"} = Astro.props;
 		<link rel="stylesheet" href="/styles/typography.css">
 		<title>{title}</title>
 	</head>
-	<body class="bg-background font-restart">
+	<body class="bg-background font-restart w-screen">
 		<Navbar />
-		<div class="bg-background pt-24 px-8 w-full min-h-[100dvh]">
-			<slot />
+		<main class="bg-background flex justify-center pt-24 min-h-[100dvh] ">
+		<div class="w-[90vw]">
+			<slot/>
 		</div>
+		</main>
 		<Footer/>
 	</body>
 </html>

@@ -1,2 +1,2 @@
 declare module "locomotive-scroll";
-declare module "@nanostores/react"
+declare module "@nanostores/react";

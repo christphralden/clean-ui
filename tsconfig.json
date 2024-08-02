@@ -12,11 +12,14 @@
       "@micro-interactions/*": [
         "modules/micro-interactions/*"
       ],
+      "@scroll-interactions/*": [
+        "modules/scroll-interactions/*"
+      ],
       "@content/*": [
         "content/*"
       ]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
   }
 }

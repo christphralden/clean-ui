@@ -1,0 +1,1 @@
+export {TextParallax} from './text-parallax/react/text-parallax'

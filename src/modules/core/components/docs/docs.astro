@@ -6,7 +6,7 @@ import Snippet from '../snippet/snippet.astro';
 import { cn } from '@core/lib/utils';
 import Fallback from './fallback.astro';
 import { ZodError } from 'zod';
-import { docsSchema } from "@content/config"
+import { docsSchema } from "@content/config";
 
 type Props = {
   className?: string;
@@ -18,18 +18,18 @@ const { className, collection, slug } = Astro.props;
 
 const page = await getEntry(collection, slug);
 
-function parseCollection(page:any){
-  try{
-    const parsedDocs = docsSchema.parse(page)
-    return parsedDocs
-  }catch(error){
-    if(error instanceof ZodError){
-      throw new Error(error.message)
+function parseCollection(page: any) {
+  try {
+    const parsedDocs = docsSchema.parse(page);
+    return parsedDocs;
+  } catch (error) {
+    if (error instanceof ZodError) {
+      throw new Error(error.message);
     }
   }
 }
 
-const parsedPage = parseCollection(page?.data)
+const parsedPage = parseCollection(page?.data);
 ---
 
 <div id="docs-container" class={cn('w-full h-fit', className)}>
@@ -42,7 +42,7 @@ const parsedPage = parseCollection(page?.data)
         </div>
 
         <tab-list>
-          <div role="tablist" class="flex  border-b-[1px] border-gray-400">
+          <div role="tablist" class="flex border-b-[1px] border-gray-400">
             {parsedPage.versions.map((version, index) => (
               <button
                 id={`tab-${version.framework}`}
@@ -64,14 +64,11 @@ const parsedPage = parseCollection(page?.data)
                 class={cn(index !== 0 && 'hidden')}
                 aria-hidden={index !== 0 ? "true" : "false"}
               >
-                
-                  {version.component && 
-                    (
-                      <div class="w-full min-h-96 justify-center items-center flex mt-4">
-                        <DynamicRenderer componentName={version.component} client:idle />
-                      </div>
-                    )
-                  }
+                {version.component && (
+                  <div class="w-full min-h-96 justify-center items-center flex mt-4">
+                    <DynamicRenderer componentName={version.component} client:idle/>
+                  </div>
+                )}
 
                 <div class="flex flex-col gap-2 mt-8">
                   {version.content.map(block => {
@@ -99,7 +96,7 @@ const parsedPage = parseCollection(page?.data)
                   <div class="flex flex-col gap-4 mt-8">
                     <h3 class="text-xl font-semibold">{variant.header}</h3>
                     <div class="w-full h-80 justify-center items-center flex">
-                      <DynamicRenderer componentName={variant.component} client:idle />
+                      <DynamicRenderer componentName={variant.component} client:idle/>
                     </div>
                     <Snippet
                       code={variant.code.value}
@@ -124,13 +121,14 @@ const parsedPage = parseCollection(page?.data)
   </section>
 </div>
 
+
 <style>
   .tabUnderline{
     border-bottom: solid 2px black;
   } 
 </style>
 
-<script>
+<script type="module">
   class Tabs extends HTMLElement {
     constructor() {
       super();

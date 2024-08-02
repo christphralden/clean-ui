@@ -10,7 +10,7 @@ versions:
       - type: "header"
         value: "Implementation"
       - type: "description"
-        value: "Component for the variable hover."
+        value: "Component for the Variable Hover."
       - type: "code"
         filename: "variable-hover.tsx"
         lang: "typescript"
@@ -49,6 +49,8 @@ versions:
               </div>
             );
           };
+
+
       - type: "header"
         value: "Use a variable font."
       - type: "description"
@@ -63,6 +65,8 @@ versions:
             font-weight: 100 900; 
             font-style: normal; 
           }
+
+
       - type: "header"
         value: "Update tailwind.config.mjs."
       - type: "description"
@@ -83,6 +87,8 @@ versions:
             },
             plugins: [],
           }
+
+
       - type: "header"
         value: "Install GSAP into your project."
       - type: "description"
@@ -161,6 +167,8 @@ versions:
                   });
               });
           }
+
+
       - type: "header"
         value: "Copy and paste the following code into your project."
       - type: "description"
@@ -180,6 +188,8 @@ versions:
         value: "Update imports."
       - type: "description"
         value: "Change the import paths to match your project."
+
+
     variants:
       - component: "variable-hover"
         header: "Second version"
@@ -221,6 +231,8 @@ versions:
                 </div>
               );
             };
+
+            
   - framework: "astro"
     lang: "typescript"
     description: "Implementation in Astro with TypeScript."

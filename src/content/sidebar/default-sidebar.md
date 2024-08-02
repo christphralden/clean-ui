@@ -239,18 +239,4 @@ versions:
       - type: "description"
         value: "Change the import paths to match your project."
 
-      - type: "header"
-        value: "Additional tips."
-      - type: "description"
-        value: "Define index.ts as an entry point for your imports."
-      - type: "code"
-        filename: "index.ts"
-        lang: "typescript"
-        value: |
-            export { Sidebar } from './react/sidebar' // adjust path
-            export type { RouteName, RouteGroup, RouteMap } from './react/sidebar' // adjust path
-            export { SidebarContextProvider, useSidebarContext } from './react/context/sidebar-context' // adjust path
-            
-
-
 ---

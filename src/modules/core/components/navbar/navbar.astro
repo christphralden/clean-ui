@@ -4,12 +4,13 @@ import { padNumber } from "@core/lib/utils";
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="fixed w-full h-20 flex items-center justify-between z-10 bg-background">
-    <div class="h-full px-8 items-center uppercase flex text-xl ">
+<nav class="fixed w-full h-20 flex justify-center">
+  <div class="w-[90vw] h-full flex items-center justify-between z-10 bg-background">
+    <div class="w-fit items-center uppercase flex text-xl ">
         <h1 class="logo">CLEAN—UI</h1>
     </div>
-	
-    <div class="w-3/4 flex px-8 gap-8 xl:gap-16 justify-end h-full">
+
+    <div class="w-3/4 flex justify-end gap-8 xl:gap-16">
         {
             NavbarRoutes.map((routes,i) =>{ 
                 const isActive = routes.route.includes(currentPath);
@@ -20,5 +21,8 @@ const currentPath = Astro.url.pathname;
                     </a>
             )})
         }
+
     </div>
+
+  </div>
 </nav>
