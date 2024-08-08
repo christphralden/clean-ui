@@ -17,7 +17,7 @@ export function textParallaxScroll({
     x: direction,
     scrollTrigger: {
       trigger: trigger,
-      start: start ?? "0",
+      start: start ?? "top top",
       end: end ?? "bottom top",
       scrub: true,
     },

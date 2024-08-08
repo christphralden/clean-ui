@@ -9,13 +9,14 @@ export const DynamicRenderer = ({
   const Component = ComponentMap.get(componentName);
 
   if (!Component || !isValidElement(Component)) {
-    console.error(`Component not found or invalid: ${componentName}`);
-    return null; 
+    throw new Error(`Component not found or invalid: ${componentName}`);
   }
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {Component}
+      <>
+        {Component}
+      </> 
     </Suspense>
   );
 };

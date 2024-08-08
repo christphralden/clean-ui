@@ -31,19 +31,18 @@ function parseCollection(page: any) {
 
 const parsedPage = parseCollection(page?.data);
 ---
-
-<div id="docs-container" class={cn('w-full h-fit', className)}>
-  <section class="flex flex-col gap-8">
-    {parsedPage ? (
-      <>
+<div id="docs-container" class={cn("w-full h-fit", className)}>
+  <section class="w-full flex flex-col gap-8">
+    {parsedPage &&
+      <Fragment>
         <div class="flex flex-col gap-2">
           <h1 class="text-3xl font-medium">{parsedPage.title}</h1>
           <h3 class="text-xl font-light">{parsedPage.description}</h3>
         </div>
 
-        <tab-list>
+        <tab-list class="w-full">
           <div role="tablist" class="flex border-b-[1px] border-gray-400">
-            {parsedPage.versions.map((version, index) => (
+            {parsedPage.versions.map((version, index)=>(
               <button
                 id={`tab-${version.framework}`}
                 role="tab"
@@ -56,20 +55,22 @@ const parsedPage = parseCollection(page?.data);
             ))}
           </div>
 
-          <div tabs-container>
-            {parsedPage.versions.map((version, index) => (
-              <div
+          <div
+            tabs-container
+            class="w-full flex flex-col"
+          >
+            {parsedPage.versions.map((version, index)=>(
+              <div 
                 id={`${version.framework}-panel`}
                 tab-content={version.framework}
-                class={cn(index !== 0 && 'hidden')}
+                class={cn(index !== 0 && 'hidden', "w-full")}
                 aria-hidden={index !== 0 ? "true" : "false"}
               >
-                {version.component && (
-                  <div class="w-full min-h-96 justify-center items-center flex mt-4">
+                {version.component && ( 
+                  <div class="w-full min-h-96 justify-center items-center flex mt-4 dynamic-content">
                     <DynamicRenderer componentName={version.component} client:idle/>
                   </div>
-                )}
-
+                )} 
                 <div class="flex flex-col gap-2 mt-8">
                   {version.content.map(block => {
                     switch (block.type) {
@@ -95,8 +96,8 @@ const parsedPage = parseCollection(page?.data);
                 {version.variants?.map(variant => (
                   <div class="flex flex-col gap-4 mt-8">
                     <h3 class="text-xl font-semibold">{variant.header}</h3>
-                    <div class="w-full h-80 justify-center items-center flex">
-                      <DynamicRenderer componentName={variant.component} client:idle/>
+                    <div class="w-full h-80 justify-center items-center flex dynamic-content">
+                      <DynamicRenderer componentName={variant.component} client:idle />
                     </div>
                     <Snippet
                       code={variant.code.value}
@@ -108,16 +109,8 @@ const parsedPage = parseCollection(page?.data);
             ))}
           </div>
         </tab-list>
-
-        <div>
-          <h3 class="text-xl">Brought to you by @{parsedPage.creator}</h3>
-        </div>
-      </>
-    ) 
-    :
-    (
-      <Fallback />
-    )}
+      </Fragment>
+    }
   </section>
 </div>
 
@@ -126,9 +119,10 @@ const parsedPage = parseCollection(page?.data);
   .tabUnderline{
     border-bottom: solid 2px black;
   } 
+
 </style>
 
-<script type="module">
+<script>
   class Tabs extends HTMLElement {
     constructor() {
       super();

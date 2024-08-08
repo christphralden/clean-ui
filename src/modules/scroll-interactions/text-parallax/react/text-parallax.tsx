@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {cn} from '@core/lib/utils';
 import {textParallaxScroll} from '@core/lib/animations';
 
@@ -18,7 +18,7 @@ const TextContent:ParallaxArgs[] = [
     },
     {
         text: "You are just as likely to solve a problem by being unconventional and determined as by being brilliant.",
-        direction: "-10%"
+        direction: "-20%"
     },
 ]
 
@@ -41,6 +41,7 @@ export const TextParallax = ({
 					select: paragraph,
 					direction: direction,
 					trigger: trigger,
+					start: '0'
 				});
 			});
 		}
@@ -50,20 +51,21 @@ export const TextParallax = ({
 		<div
 			id="trigger"
 			ref={triggerRef} 
-			className={cn('text-nowrap h-[75vh] w-full overflow-clip flex justify-center items-center flex-col gap-2 uppercase', className)}
+			className={cn('text-nowrap w-full py-20 overflow-hidden flex justify-center items-center flex-col gap-2 uppercase', className)}
 		>
-            {TextContent.map((content, index)=>{
-                return(
-                    <p
+			{TextContent.map((content, index)=>{
+				return(
+					<p
 					key={index}
-					className="text-parallax text-5xl"
+					className="text-5xl"
 					ref={(el) => (paragraphRefs.current[index] = el)}
 					data-direction={content.direction}
-                    >
-                        {content.text}
-                    </p>
-                )
-            })}
+					>
+						{content.text}
+					</p>
+				)
+			})}
+            
 		</div>
 	);
 };

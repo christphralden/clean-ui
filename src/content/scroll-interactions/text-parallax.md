@@ -16,7 +16,7 @@ versions:
         filename: "text-parallax.tsx"
         lang: "typescript"
         value: |
-          import React, {useEffect, useRef} from 'react';
+          import {useEffect, useRef} from 'react';
           import {cn} from '@core/lib/utils';
           import {textParallaxScroll} from '@core/lib/animations';
 
@@ -36,7 +36,7 @@ versions:
               },
               {
                   text: "You are just as likely to solve a problem by being unconventional and determined as by being brilliant.",
-                  direction: "-10%"
+                  direction: "-20%"
               },
           ]
 
@@ -59,6 +59,7 @@ versions:
                     select: paragraph,
                     direction: direction,
                     trigger: trigger,
+                    start: '0'
                   });
                 });
               }
@@ -68,23 +69,34 @@ versions:
               <div
                 id="trigger"
                 ref={triggerRef} 
-                className={cn('text-nowrap h-[75vh] w-full overflow-clip flex justify-center items-center flex-col gap-2 uppercase', className)}
+                className={cn('text-nowrap w-full py-20 overflow-hidden flex justify-center items-center flex-col gap-2 uppercase', className)}
               >
-                      {TextContent.map((content, index)=>{
-                          return(
-                              <p
+                {TextContent.map((content, index)=>{
+                  return(
+                    <p
                     key={index}
-                    className="text-parallax text-5xl"
+                    className="text-5xl"
                     ref={(el) => (paragraphRefs.current[index] = el)}
                     data-direction={content.direction}
-                              >
-                                  {content.text}
-                              </p>
-                          )
-                      })}
+                    >
+                      {content.text}
+                    </p>
+                  )
+                })}
+                      
               </div>
             );
           };
+
+      - type: "header"
+        value: "Install GSAP into your project."
+      - type: "description"
+        value: "GSAP is a lightweight animation library that will help animating things easier.<br/>Run this command in the terminal with your package manager of choice to install GSAP, npm will be used as an example."
+      - type: "code"
+        filename: "install-gsap"
+        lang: "text"
+        value: |
+          npm i gsap
 
 
       - type: "header"
@@ -109,17 +121,6 @@ versions:
               },
             },
           });
-
-
-      - type: "header"
-        value: "Install GSAP into your project."
-      - type: "description"
-        value: "GSAP is a lightweight animation library that will help animating things easier.<br/>Run this command in the terminal with your package manager of choice to install GSAP, npm will be used as an example."
-      - type: "code"
-        filename: "install-gsap"
-        lang: "text"
-        value: |
-          npm i gsap
 
 
       - type: "header"
@@ -263,9 +264,20 @@ versions:
 
 
       - type: "header"
+        value: "Install GSAP into your project."
+      - type: "description"
+        value: "GSAP is a lightweight animation library that will help animating things easier.<br/>Run this command in the terminal with your package manager of choice to install GSAP, npm will be used as an example."
+      - type: "code"
+        filename: "install-gsap"
+        lang: "text"
+        value: |
+          npm i gsap
+
+
+      - type: "header"
         value: "Update astro.config.mjs."
       - type: "description"
-        value: 'Update astro.config.mjs as GSAP RegisterPlugin might break imports'
+        value: "Update astro.config.mjs as GSAP RegisterPlugin might break imports if you're using astro on top"
       - type: "code"
         filename: "astro.config.mjs"
         lang: "javascript"
@@ -284,18 +296,6 @@ versions:
               },
             },
           });
-
-
-      - type: "header"
-        value: "Install GSAP into your project."
-      - type: "description"
-        value: "GSAP is a lightweight animation library that will help animating things easier.<br/>Run this command in the terminal with your package manager of choice to install GSAP, npm will be used as an example."
-      - type: "code"
-        filename: "install-gsap"
-        lang: "text"
-        value: |
-          npm i gsap
-
 
 
       - type: "header"

@@ -22,16 +22,10 @@ const { group, type } = Astro.params
 <Layout >
     <WithSidebar>
         <div
-            class="flex-1 w-full flex flex-col gap-16 max-w-full"
+            class="flex w-full flex-col gap-16"
             slot="content"
         >
-            <div class="flex w-full flex-col gap-16">
-                <Docs className='w-full xl:w-3/4' collection={group as CollectionTypes} slug={type}/>
-            </div>
+            <Docs className='w-full xl:w-3/4' collection={group as CollectionTypes} slug={type}/>
         </div>
     </WithSidebar>
 </Layout>
-
-<style>
-
-</style>
