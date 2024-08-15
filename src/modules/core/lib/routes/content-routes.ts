@@ -8,14 +8,14 @@ export const ContentRoutes = {
                     name:"introduction",
                     route:"introduction"
                 },
-                {
-                    name: "installation",
-                    route: "installation"
-                },
-                {
-                    name: "setup",
-                    route: "setup"
-                },
+                // {
+                //     name: "installation",
+                //     route: "installation"
+                // },
+                // {
+                //     name: "setup",
+                //     route: "setup"
+                // },
             ]
         },
         {
@@ -46,6 +46,10 @@ export const ContentRoutes = {
                 {
                     name: "variable hover",
                     route: "variable-hover"
+                },
+                {
+                    name: "text glitch",
+                    route: "text-glitch"
                 }
             ]
         },

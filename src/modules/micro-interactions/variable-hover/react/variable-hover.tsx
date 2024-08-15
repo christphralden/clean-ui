@@ -3,7 +3,7 @@ import { variableFontHover } from "@core/lib/animations/hover-animations";
 import { useEffect } from "react";
 
 export const VariableHover = ({
-  text = "A very cool text hover effect",
+  text = "Hover Me",
 }: {
   text?: string;
 }) => {

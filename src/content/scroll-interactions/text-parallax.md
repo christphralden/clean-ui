@@ -262,7 +262,6 @@ versions:
           </script>
 
 
-
       - type: "header"
         value: "Install GSAP into your project."
       - type: "description"

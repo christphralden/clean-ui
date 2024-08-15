@@ -20,7 +20,7 @@ versions:
           import { useEffect } from 'react';
 
           export const VariableHover = ({
-            text = "A very cool text hover effect"
+            text = "Hover Me"
           }:{
             text?: string
           }) => {
@@ -189,48 +189,6 @@ versions:
       - type: "description"
         value: "Change the import paths to match your project."
 
-
-    variants:
-      - component: "variable-hover"
-        header: "Second version"
-        code:
-          filename: "yes"
-          lang: "typescript"
-          value: |
-            import { splitTextToLetters } from '@core/lib/utils'; // adjust import
-            import { variableFontHover } from '@core/lib/animations'; // adjust import
-            import { useEffect } from 'react';
-
-            export const VariableHoverV2 = ({
-              text = "A modified text hover effect"
-            }:{
-              text?: string
-            }) => {
-
-              useEffect(() => {
-                variableFontHover({
-                  select:'[data-animate="font-weight"]',
-                  animationDuration: 0.5,
-                  maxDistance:300,
-                  minFontWeight:400,
-                  maxFontWeight:900
-                })	 
-              }, [])
-              
-              const letters = splitTextToLetters({
-                text
-              })
-
-              return (
-                <div>
-                  <h1 className='text-5xl font-regrade uppercase'>
-                    {letters.map((char, i)=>(
-                      <span key={i} className="char" data-animate="font-weight">{char}</span>
-                    ))}
-                  </h1>
-                </div>
-              );
-            };
 
             
   - framework: "astro"
