@@ -17,6 +17,7 @@ type Props = {
 const { className, collection, slug } = Astro.props;
 
 const page = await getEntry(collection, slug);
+console.log(page)
 
 function parseCollection(page: any) {
   try {
